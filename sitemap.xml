@@ -3,53 +3,53 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/post/setting-up-ghcjs/</loc>
+    <loc>https://phlummox.github.io/post/setting-up-ghcjs/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://phlummox.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/development/</loc>
-    <lastmod>2018-07-25T03:38:32+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/ghcjs/</loc>
+    <loc>https://phlummox.github.io/tags/development/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/haskell/</loc>
+    <loc>https://phlummox.github.io/tags/ghcjs/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/post/</loc>
+    <loc>https://phlummox.github.io/tags/haskell/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/stack/</loc>
+    <loc>https://phlummox.github.io/post/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://phlummox.github.io/tags/stack/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>https://phlummox.github.io/tags/</loc>
+    <lastmod>2018-07-25T03:38:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://phlummox.github.io/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
     <priority>0</priority>
   </url>

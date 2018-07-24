@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Haskell on phlummox</title>
-    <link>/tags/haskell/</link>
+    <link>https://phlummox.github.io/tags/haskell/</link>
     <description>Recent content in Haskell on phlummox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 25 Jul 2018 03:38:32 +0800</lastBuildDate>
     
-	<atom:link href="/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://phlummox.github.io/tags/haskell/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>When running &#39;stack setup&#39; for ghcjs…</title>
-      <link>/post/setting-up-ghcjs/</link>
+      <link>https://phlummox.github.io/post/setting-up-ghcjs/</link>
       <pubDate>Wed, 25 Jul 2018 03:38:32 +0800</pubDate>
       
-      <guid>/post/setting-up-ghcjs/</guid>
+      <guid>https://phlummox.github.io/post/setting-up-ghcjs/</guid>
       <description>… make sure you don&amp;rsquo;t have cabal in your path. Otherwise you&amp;rsquo;ll get odd build errors, and ghcjs will never install: see this issue on the ghcjs issue tracker.</description>
     </item>
     
