@@ -6,10 +6,21 @@
     <description>Recent content in Posts on phlummox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 25 Jul 2018 03:38:32 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 30 Jul 2018 12:34:02 +0800</lastBuildDate>
     
 	<atom:link href="https://phlummox.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Accessing the filesystem of a running Docker container</title>
+      <link>https://phlummox.github.io/post/accessing-docker-container-fs/</link>
+      <pubDate>Mon, 30 Jul 2018 12:34:02 +0800</pubDate>
+      
+      <guid>https://phlummox.github.io/post/accessing-docker-container-fs/</guid>
+      <description>Well that&amp;rsquo;s neat &amp;mdash; there&amp;rsquo;s a quick-and-dirty trick for accessing the filesystem of a running Docker container from your host machine. Not especially safe, but much quicker than messing around with ssh servers etc. within the container.
+So, within the proc filesystem, /proc/some-pid/root/ exposes the root filesystem that process some-pid is running on. So we can do the following, to get an interactive shell on that filesystem:
+ Find some process that’s running inside the container, that we can uniquely identify.</description>
+    </item>
     
     <item>
       <title>When running &#39;stack setup&#39; for ghcjs…</title>

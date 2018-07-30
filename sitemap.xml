@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://phlummox.github.io/post/accessing-docker-container-fs/</loc>
+    <lastmod>2018-07-30T12:34:02+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://phlummox.github.io/post/setting-up-ghcjs/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
   </url>
@@ -32,7 +37,7 @@
   
   <url>
     <loc>https://phlummox.github.io/post/</loc>
-    <lastmod>2018-07-25T03:38:32+08:00</lastmod>
+    <lastmod>2018-07-30T12:34:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -50,7 +55,7 @@
   
   <url>
     <loc>https://phlummox.github.io/</loc>
-    <lastmod>2018-07-25T03:38:32+08:00</lastmod>
+    <lastmod>2018-07-30T12:34:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
