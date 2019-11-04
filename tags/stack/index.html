@@ -62,7 +62,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.42.1" />
+ <meta name="generator" content="Hugo 0.46" />
         
         <link href="https://phlummox.github.io/tags/stack/index.xml" rel="alternate" type="application/rss+xml" title="phlummox" />
         <link href="https://phlummox.github.io/tags/stack/index.xml" rel="feed" type="application/rss+xml" title="phlummox" />
@@ -77,6 +77,31 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
     
+
+    <script>
+    function getEmailLinkEl() {
+      queryRes = document.evaluate("//nav//a[starts-with(./@href, 'mailto')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+      return queryRes.singleNodeValue;
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var emailLnkEl = getEmailLinkEl();
+
+      emailLnkEl.onmouseover = function() {
+        if(this.decoded != true) {
+          this.href = "mailto:" + atob(this.href.replace(/^mailto:/,""));
+          this.decoded = true;
+        }
+      };
+
+      emailLnkEl.onmouseout = function() {
+        if(this.decoded != false) {
+          this.href = "mailto:" + btoa(this.href.replace(/^mailto:/,""));
+          this.decoded = false;
+        }
+      };
+    });
+    </script>
 
     <body>
          
@@ -111,11 +136,15 @@
                     
                         <ul class="nav navbar-nav navbar-right">
                             
+                                <li class="navbar-icon"><a href="mailto:d2VibWFzdGVyQHBobHVtbW94LmRldg=="><i class="fa fa-envelope-o"></i></a></li>
+                            
                                 <li class="navbar-icon"><a href="https://github.com/phlummox/"><i class="fa fa-github"></i></a></li>
                             
                                 <li class="navbar-icon"><a href="https://twitter.com/phlummox/"><i class="fa fa-twitter"></i></a></li>
                             
                                 <li class="navbar-icon"><a href="https://stackoverflow.com/users/6818792/phlummox/"><i class="fa fa-stack-overflow"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.reddit.com/user/phlummox/"><i class="fa fa-reddit"></i></a></li>
                             
                         </ul>
                     
