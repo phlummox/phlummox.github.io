@@ -1,11 +1,11 @@
 
 .intro > h1 {
-  color: var(--accent) !important; 
+  color: var(--accent) !important;
   font-size: x-large !important;
 }
 
 .intro > h2 {
-  display: none;   
+  display: none;
 }
 
 .text-muted {

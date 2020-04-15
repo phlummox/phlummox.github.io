@@ -97,3 +97,19 @@ footer {
 img {
     max-width: 100%;
 }
+
+
+/*commento customization*/
+
+.commento-submit-button {
+  background: var(--accent) !important;
+  line-height: 3px !important;
+}
+
+.commento-root-font * {
+    font-family: 'Raleway', sans-serif !important;
+}
+
+#commento-markdown-help-root {
+  line-height: 2.5 !important;
+}

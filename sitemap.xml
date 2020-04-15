@@ -3,58 +3,58 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://phlummox.github.io/post/accessing-docker-container-fs/</loc>
+    <loc>https://phlummox.dev/post/accessing-docker-container-fs/</loc>
     <lastmod>2018-07-30T12:34:02+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phlummox.github.io/post/setting-up-ghcjs/</loc>
+    <loc>https://phlummox.dev/post/setting-up-ghcjs/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://phlummox.github.io/categories/</loc>
+    <loc>https://phlummox.dev/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://phlummox.github.io/tags/development/</loc>
-    <lastmod>2018-07-25T03:38:32+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://phlummox.github.io/tags/ghcjs/</loc>
+    <loc>https://phlummox.dev/tags/development/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://phlummox.github.io/tags/haskell/</loc>
+    <loc>https://phlummox.dev/tags/ghcjs/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://phlummox.github.io/post/</loc>
+    <loc>https://phlummox.dev/tags/haskell/</loc>
+    <lastmod>2018-07-25T03:38:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://phlummox.dev/post/</loc>
     <lastmod>2018-07-30T12:34:02+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://phlummox.github.io/tags/stack/</loc>
+    <loc>https://phlummox.dev/tags/stack/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://phlummox.github.io/tags/</loc>
+    <loc>https://phlummox.dev/tags/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://phlummox.github.io/</loc>
+    <loc>https://phlummox.dev/</loc>
     <lastmod>2018-07-30T12:34:02+08:00</lastmod>
     <priority>0</priority>
   </url>
