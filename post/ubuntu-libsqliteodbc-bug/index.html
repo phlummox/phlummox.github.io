@@ -7,7 +7,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Posts</title>
+        <title>Ubuntu libsqliteodbc bug</title>
         
         <link rel="icon" type="image/png" href="https://www.phlummox.dev/images/some-random-icon.png">
         <style>
@@ -65,8 +65,6 @@
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
  <meta name="generator" content="Hugo 0.47.1" />
         
-        <link href="https://phlummox.dev/post/index.xml" rel="alternate" type="application/rss+xml" title="phlummox" />
-        <link href="https://phlummox.dev/post/index.xml" rel="feed" type="application/rss+xml" title="phlummox" />
 
         
     </head>
@@ -158,9 +156,7 @@
 
 <main>
 
-    <h2>Posts</h2>
-
-     <div class="item">
+    <div class="item">
 
     
     
@@ -174,47 +170,58 @@
     
 
 </div>
-  <div class="item">
 
-    
-    
-    
 
-    
-    
+    <br> <div class="text-justify"><p>Putting this here so I can find it again&hellip;</p>
 
-    <h4><a href="/post/accessing-docker-container-fs/">Accessing the filesystem of a running Docker container</a></h4>
-    <h5>July 30, 2018</h5>
-    
+<p>On Ubuntu 16.04, <code>libsqliteodbc</code><sup class="footnote-ref" id="fnref:odbc"><a href="#fn:odbc">1</a></sup>  installs dynamic library files
+to the wrong directory.<sup class="footnote-ref" id="fnref:alt"><a href="#fn:alt">2</a></sup></p>
 
+<p>Instead of putting <code>libsqlite3odbc.so</code> in <code>/usr/lib/x86_64-linux-gnu</code>,
+it puts it in a subdirectory, <code>odbc</code>.  And then
+<code>libreoffice-base</code><sup class="footnote-ref" id="fnref:lobase"><a href="#fn:lobase">3</a></sup> looks for it in the normal place and can&rsquo;t
+find it, leading to runtime errors if you try to connect via ODBC to an
+Sqlite3 database:</p>
+
+<pre><code class="language-text">The connection to the data source &quot;MY_DATA_SOURCE&quot; could not be established.
+[unixODBC][Driver Manager]Can't open lib 'libsqlite3odbc.so': file not found
+</code></pre>
+
+<p>So a fix is to install a symlink in the normal directory, pointing to
+the installed <code>.so</code> file:</p>
+
+<pre><code class="language-bash">$ sudo ln -s odbc/libsqlite3odbc.so /usr/lib/x86_64-linux-gnu
+</code></pre>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:odbc">version <a href="https://packages.ubuntu.com/xenial/libsqliteodbc">0.9992-0.1</a>
+ <a class="footnote-return" href="#fnref:odbc"><sup>[return]</sup></a></li>
+<li id="fn:alt">Or, alternatively, <code>libreoffice-base</code> is looking in the wrong place. But there seems no good reason to install the library files to a subdirectory.
+ <a class="footnote-return" href="#fnref:alt"><sup>[return]</sup></a></li>
+<li id="fn:lobase">version  <a href="https://launchpad.net/ubuntu/+source/libreoffice/1:5.1.6~rc2-0ubuntu1~xenial10">1:5.1.6~rc2-0ubuntu1~xenial10</a>
+ <a class="footnote-return" href="#fnref:lobase"><sup>[return]</sup></a></li>
+</ol>
 </div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/setting-up-ghcjs/">When running &#39;stack setup&#39; for ghcjs…</a></h4>
-    <h5>July 25, 2018</h5>
-    
-    <a href="https://phlummox.dev/tags/haskell"><kbd class="item-tag">haskell</kbd></a>
-    
-    <a href="https://phlummox.dev/tags/ghcjs"><kbd class="item-tag">ghcjs</kbd></a>
-    
-    <a href="https://phlummox.dev/tags/stack"><kbd class="item-tag">stack</kbd></a>
-    
-    <a href="https://phlummox.dev/tags/development"><kbd class="item-tag">development</kbd></a>
-    
-
 </div>
- 
+
+    
+    
+
+    
+
+    
+
+        <h4 class="page-header">Comments</h4><script defer src="https://cdn.commento.io/js/commento.js"
+  data-css-override="https://www.phlummox.dev/css/main.css"
+  data-auto-init="true"
+  ></script>
+<div id="commento"></div>
+
 
 </main>
-
-
 
         <footer>
 

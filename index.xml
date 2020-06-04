@@ -6,10 +6,22 @@
     <description>Recent content on phlummox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Jul 2018 12:34:02 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://phlummox.dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ubuntu libsqliteodbc bug</title>
+      <link>https://phlummox.dev/post/ubuntu-libsqliteodbc-bug/</link>
+      <pubDate>Thu, 04 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://phlummox.dev/post/ubuntu-libsqliteodbc-bug/</guid>
+      <description>Putting this here so I can find it again&amp;hellip;
+On Ubuntu 16.04, libsqliteodbc1 installs dynamic library files to the wrong directory.2
+Instead of putting libsqlite3odbc.so in /usr/lib/x86_64-linux-gnu, it puts it in a subdirectory, odbc. And then libreoffice-base3 looks for it in the normal place and can&amp;rsquo;t find it, leading to runtime errors if you try to connect via ODBC to an Sqlite3 database:
+The connection to the data source &amp;quot;MY_DATA_SOURCE&amp;quot; could not be established.</description>
+    </item>
     
     <item>
       <title>Accessing the filesystem of a running Docker container</title>
