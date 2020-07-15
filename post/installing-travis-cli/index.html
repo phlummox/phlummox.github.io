@@ -7,7 +7,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Ubuntu libsqliteodbc bug</title>
+        <title>Installing Travis cli</title>
         
         <link rel="icon" type="image/png" href="https://www.phlummox.dev/images/some-random-icon.png">
         <style>
@@ -165,46 +165,33 @@
     
     
 
-    <h4><a href="/post/ubuntu-libsqliteodbc-bug/">Ubuntu libsqliteodbc bug</a></h4>
-    <h5>June 4, 2020</h5>
+    <h4><a href="/post/installing-travis-cli/">Installing Travis cli</a></h4>
+    <h5>July 14, 2020</h5>
     
 
 </div>
 
 
-    <br> <div class="text-left single-content"  ><p>Putting this here so I can find it again&hellip;</p>
-
-<p>On Ubuntu 16.04, <code>libsqliteodbc</code><sup class="footnote-ref" id="fnref:odbc"><a href="#fn:odbc">1</a></sup>  installs dynamic library files
-to the wrong directory.<sup class="footnote-ref" id="fnref:alt"><a href="#fn:alt">2</a></sup></p>
-
-<p>Instead of putting <code>libsqlite3odbc.so</code> in <code>/usr/lib/x86_64-linux-gnu</code>,
-it puts it in a subdirectory, <code>odbc</code>.  And then
-<code>libreoffice-base</code><sup class="footnote-ref" id="fnref:lobase"><a href="#fn:lobase">3</a></sup> looks for it in the normal place and can&rsquo;t
-find it, leading to runtime errors if you try to connect via ODBC to an
-Sqlite3 database:</p>
-
-<pre><code class="language-text">The connection to the data source &quot;MY_DATA_SOURCE&quot; could not be established.
-[unixODBC][Driver Manager]Can't open lib 'libsqlite3odbc.so': file not found
-</code></pre>
-
-<p>So a fix is to install a symlink in the normal directory, pointing to
-the installed <code>.so</code> file:</p>
-
-<pre><code class="language-bash">$ sudo ln -s odbc/libsqlite3odbc.so /usr/lib/x86_64-linux-gnu
-</code></pre>
-<div class="footnotes">
-
-<hr />
-
-<ol>
-<li id="fn:odbc">version <a href="https://packages.ubuntu.com/xenial/libsqliteodbc">0.9992-0.1</a>
- <a class="footnote-return" href="#fnref:odbc"><sup>[return]</sup></a></li>
-<li id="fn:alt">Or, alternatively, <code>libreoffice-base</code> is looking in the wrong place. But there seems no good reason to install the library files to a subdirectory.
- <a class="footnote-return" href="#fnref:alt"><sup>[return]</sup></a></li>
-<li id="fn:lobase">version  <a href="https://launchpad.net/ubuntu/+source/libreoffice/1:5.1.6~rc2-0ubuntu1~xenial10">1:5.1.6~rc2-0ubuntu1~xenial10</a>
- <a class="footnote-return" href="#fnref:lobase"><sup>[return]</sup></a></li>
+    <br> <div class="text-left single-content"  ><style>
+  li {
+    margin-top: 18pt;
+  }
+</style>
+<p>A reminder to myself on how to install the Travis CLI command-line tool on Ubuntu (which is the only time I ever make use of Ruby, and which I only ever do when installing a fresh OS).</p>
+<ol type="1">
+<li><p>Install Ruby.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> apt install ruby ruby-dev</span></code></pre></div></li>
+<li><p>Install the Travis gem.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">gem</span> install --user-install travis</span></code></pre></div>
+<p>The output of this will include a warning that “You don’t have <code>/home/​phlummox/​.gem/​ruby/​2.5.0/​bin</code> [or something similar] in your PATH, gem executables will not run”.</p></li>
+<li><p>So ensure it’s added next time you log in:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="bu">echo</span> <span class="st">&#39;PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH&#39;</span> <span class="op">&gt;&gt;</span> ~/.profile</span></code></pre></div>
+<p>(And <code>source ~/.profile</code>, to update your path right now.)</p></li>
+<li><p>Run <code>travis login</code>, <strong>OR</strong> (more likely) <code>travis login --pro</code>, to authenticate with the Travis CLI servers using GitHub. The former logs you in to <a href="https://travis-ci.org/">travis-ci.org</a>, the latter to <a href="https://travis-ci.com/">travis-ci.com</a>; the <code>.org</code> server will eventually be deprecated, IIRC.</p></li>
+<li><p>Do whatever Travis-related task you needed to do. Probably, something like</p>
+<pre><code>$ travis encrypt --pro DOCKER_USERNAME=my-user-name --add env.global
+$ travis encrypt --pro DOCKER_PASSWORD=my-password  --add env.global</code></pre></li>
 </ol>
-</div>
 </div>
 
     

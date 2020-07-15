@@ -90,6 +90,10 @@ a:hover {
     border-top: var(--border-width) solid var(--accent);
 }
 
+.single-content {
+    hyphens: auto;
+}
+
 footer {
     border-bottom: var(--border-width) solid var(--accent);
 }

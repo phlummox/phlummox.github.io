@@ -6,10 +6,22 @@
     <description>Recent content in Posts on phlummox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 04 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://phlummox.dev/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Installing Travis cli</title>
+      <link>https://phlummox.dev/post/installing-travis-cli/</link>
+      <pubDate>Tue, 14 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://phlummox.dev/post/installing-travis-cli/</guid>
+      <description>li { margin-top: 18pt; }  A reminder to myself on how to install the Travis CLI command-line tool on Ubuntu (which is the only time I ever make use of Ruby, and which I only ever do when installing a fresh OS).
+Install Ruby.
+$ sudo apt install ruby ruby-dev Install the Travis gem.
+gem install --user-install travis The output of this will include a warning that “You don’t have /home/​phlummox/​.</description>
+    </item>
     
     <item>
       <title>Ubuntu libsqliteodbc bug</title>
