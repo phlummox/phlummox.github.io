@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+         
+<link rel="stylesheet" href="css/over.css">
+<meta name="google-site-verification" content="PwRmljegtbdwAY0IXp87X_n1jKLbTS6DxB5Z-WOonEU" />
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Running Azure&#39;s &lt;samp&gt;az&lt;/samp&gt; command-line tool from a docker container; or, the &#34;credentials in a container&#34; trick
+</title>
+        
+        <link rel="icon" type="image/png" href="https://www.phlummox.dev/images/some-random-icon.png">
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: #447db9;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.47.1" />
+        
+
+        
+    </head>
+
+    
+    
+    <script type="text/javascript" async
+      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+    
+
+    <script>
+    function getEmailLinkEl() {
+      queryRes = document.evaluate("//nav//a[starts-with(./@href, 'mailto')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
+      return queryRes.singleNodeValue;
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var emailLnkEl = getEmailLinkEl();
+
+      emailLnkEl.onmouseover = function() {
+        if(this.decoded != true) {
+          this.href = "mailto:" + atob(this.href.replace(/^mailto:/,""));
+          this.decoded = true;
+        }
+      };
+
+      emailLnkEl.onmouseout = function() {
+        if(this.decoded != false) {
+          this.href = "mailto:" + btoa(this.href.replace(/^mailto:/,""));
+          this.decoded = false;
+        }
+      };
+    });
+    </script>
+
+    <body>
+         
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">#</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:Z2l0aHViLmlvQHBobHVtbW94LmRldg=="><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/phlummox/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/phlummox/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://stackoverflow.com/users/6818792/phlummox/"><i class="fa fa-stack-overflow"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.reddit.com/user/phlummox/"><i class="fa fa-reddit"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/azure-in-docker/">Running Azure&rsquo;s <samp>az</samp> command-line tool from a docker container; or, the &ldquo;credentials in a container&rdquo; trick</a></h4>
+    <h5>August 17, 2020</h5>
+    
+    <a href="https://phlummox.dev/tags/azure"><kbd class="item-tag">azure</kbd></a>
+    
+    <a href="https://phlummox.dev/tags/docker"><kbd class="item-tag">docker</kbd></a>
+    
+    <a href="https://phlummox.dev/tags/container"><kbd class="item-tag">container</kbd></a>
+    
+    <a href="https://phlummox.dev/tags/cli"><kbd class="item-tag">cli</kbd></a>
+    
+    <a href="https://phlummox.dev/tags/cloud"><kbd class="item-tag">cloud</kbd></a>
+    
+    <a href="https://phlummox.dev/tags/cyber"><kbd class="item-tag">cyber</kbd></a>
+    
+    <a href="https://phlummox.dev/tags/buzzword-compliance"><kbd class="item-tag">buzzword-compliance</kbd></a>
+    
+
+</div>
+
+
+    <br> <div class="text-left single-content"  ><!--
+draft: true
+-->
+<style>
+.web-login {
+  display: block;
+  padding: 0.5em;
+  font-size: 13px;
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  margin: 0 0 0.5ex;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
+<p>Every cloud platform provider has their own CLI tool they want you to install, all with different dependencies and install methods. <a href="https://devcenter.heroku.com/articles/heroku-cli" target="_blank">Some</a> <a href="https://github.com/digitalocean/doctl/blob/master/README.md#snap-supported-os" target="_blank">want</a> you to <a href="https://lwn.net/Articles/825005/" target="_blank">install</a> their tools <a href="https://news.ycombinator.com/item?id=17055401" target="_blank">using</a> <a href="https://www.helpnetsecurity.com/2019/02/13/cve-2019-7304/" target="_blank">Snap</a>; <a href="https://aws.amazon.com/cli/" target="_blank">some</a> want you to run install scripts as <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install" target="_blank"><samp>root</samp></a> that add files not managed by your OS’s package management system;<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/8a8f17f5fd334fb583438edbd831d506.html#loio8a8f17f5fd334fb583438edbd831d506" target="_blank">some</a> want you to click through <a href="/images/azure-in-docker--germany.png" target="_blank">a license</a> where you agree to be bound by the laws of Germany. Occasionally, you might find one who actually packages their tool for <a href="https://cloud.google.com/sdk/install#installation_options" target="_blank">at least a few</a> different OS distributions, or even provides a <a href="https://www.alibabacloud.com/help/doc-detail/121541.htm" target="_blank">statically-linked binary</a> plus the <a href="https://github.com/aliyun/aliyun-cli" target="_blank">source code</a> it was built from. Really though, the best CLI is one you <a href="https://www.infoq.com/articles/azure-cloud-shell/" target="_blank">don’t have to install at all</a>.</p>
+<p>I’m surprised (and annoyed, of course) that more cloud providers don’t provide web-based shell access to their tools. But when they don’t, the next best option might be to install the tool in a Docker container. (In any case, working in a <a href="https://www.npmjs.com/package/webssh2">webssh</a> session gets a bit wearisome after a while, somewhere around the tenth time you accidentally hit <code>ctrl-r</code> and refresh the page instead of searching your command history. Installing a tool on your own machine does have <em>some</em> benefits.)</p>
+<p>Rather than having your development environment cluttered with dozens or even hundreds of dependencies you neither want nor need, why not confine each provider’s tools to a single Docker container? Then you will have to clutter your development environment with potentially only <a href="https://www.docker.com/" target="_blank"><em>one</em></a> <a href="https://coreos.com/rkt/docs/latest/rkt-vs-other-projects.html#process-model" target="_blank">baroque</a>, <a href="https://media.rubegoldberg.com/site/wp-content/uploads/2019/04/hachathon-1200x674.jpg" target="_blank">Rube</a> <a href="https://news.ycombinator.com/item?id=9963242" target="_blank">Goldberg</a><a href="https://levelup.gitconnected.com/how-docker-authentication-works-by-documentation-mitm-and-implementation-e62cd7a31178#9bf4" target="_blank">–esque</a>, <a href="https://www.smithsonianmag.com/science-nature/true-story-kudzu-vine-ate-south-180956325/" target="_blank">Kudzu-</a>pervasive framework.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<!--
+sap archived at <http://archive.is/8wq7h>
+-->
+<p>Taking Azure’s <code>az</code> tool as an example, you can do it like so:</p>
+<ol type="1">
+<li><p>Pull the Docker image (based on Alpine Linux) for the <code>az</code> CLI tool:<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">docker</span> pull mcr.microsoft.com/azure-cli</span></code></pre></div></li>
+<li><p>Create a docker volume which will hold the contents of the <code>/root</code> directory, which is where our credentials are stored:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">docker</span> -D run -v /root --name azconfig mcr.microsoft.com/azure-cli</span></code></pre></div></li>
+</ol>
+<p>We now have a stopped Docker container called <code>azconfig</code>, containing an anonymous volume<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> which contains the contents of the <code>/root</code> directory. We can use the volume by supplying <code>--volumes-from azconfig</code> as an argument to the <code>docker run</code> command.</p>
+<p>(Note that we don’t supply <code>--rm</code> as an argument this first time round, since we want to actually <em>keep</em> the container and its attached volume.)</p>
+<ol start="3" type="1">
+<li><p>Spin up a new container which mounts the volume from our <code>azconfig</code> one:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">docker</span> run --rm -it --volumes-from azconfig mcr.microsoft.com/azure-cli</span></code></pre></div></li>
+</ol>
+<p>This time we <em>do</em> use the <code>--rm</code> argument: we don’t care if this container disappears, the credentials will be stored in the volume.</p>
+<ol start="4" type="1">
+<li><p>Inside the container, we can run</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">az</span> login</span></code></pre></div>
+<p>to log on. The tool displays a message like</p>
+<div class="web-login" style="color: #AA5500 !important; font-family: monospace;">
+<p>To sign in, use a web browser to open the page <a href="https://microsoft.com/devicelogin" style="color: #AA5500 !important; font-family: monospace;">https://microsoft.com/devicelogin</a> and enter the code XXXXXXXXX to authenticate.</p>
+</div>
+<p>where the “<sample>XXXXXXXXX</sample>” is some 9-character code Microsoft uses to identify the device you’re logging in from. Follow the instructions, and voilà – we’re in.</p></li>
+</ol>
+<p>Now we can run whatever commands we like inside the running container – try typing <code>az account list</code>, just to check that the tool is working:</p>
+<pre class="text"><code>$ az account list
+[
+  {
+    &quot;cloudName&quot;: &quot;AzureCloud&quot;,
+    &quot;homeTenantId&quot;: &quot;&lt;REDACTED&gt;&quot;,
+    &quot;id&quot;: &quot;&lt;REDACTED&gt;&quot;,
+    &quot;isDefault&quot;: true,
+    &quot;managedByTenants&quot;: [],
+    &quot;name&quot;: &quot;Free Trial&quot;,
+    &quot;state&quot;: &quot;Enabled&quot;,
+    &quot;tenantId&quot;: &quot;&lt;REDACTED&gt;&quot;,
+    &quot;user&quot;: {
+      &quot;name&quot;: &quot;phlummox@phlummox.dev&quot;,
+      &quot;type&quot;: &quot;user&quot;
+    }
+  }
+]</code></pre>
+<p>And regardless of what we do with the new containers – keep them running, stop them, throw them away – we can just run up a new one to access our existing credentials and avoid having to log in again.</p>
+<p>There. Don’t you feel better about life already? If only I’d done something like this earlier, I could’ve avoided writing <a href="/post/installing-travis-cli/">this</a> post.</p>
+<p>The same sort of method should work perfectly well for other command-line tools like <a href="https://aws.amazon.com/cli/" target="_blank">Amazon’s</a>, <a href="https://devcenter.heroku.com/articles/heroku-cli" target="_blank">Heroku’s</a>, <a href="https://github.com/travis-ci/travis-ci/issues/2055" target="_blank">Travis CI’s</a>, and so on. Google <a href="https://cloud.google.com/sdk" target="_blank">Cloud SDK</a> and <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-docker.html#cliv2-docker-share-files" target="_blank">Amazon’s</a> command-line tools are the only ones I’ve noticed where the provider actually <a href="https://hub.docker.com/r/google/cloud-sdk/" target="_blank">tells users</a> <a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-docker.html#cliv2-docker-share-files" target="_blank">about the method</a> described here as an alternative to installing a godawful bunch of packages just to manage something in the cloud. But I like to think that if enough of us join together, in a spirit of good-will and positivity, and yell at cloud providers to fix their shit up, then maybe someday the others will too.</p>
+<!--
+https://github.com/travis-ci/travis.rb#readme
+-->
+<!--
+  vim: syntax=markdown :
+-->
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Though to give Amazon credit, they do at least <em>tell</em> you where their install script will be creating files. So it would be pretty easy to package the resulting files up into whatever package is native to your distribution (e.g. <code>.deb</code> or <code>.rpm</code> files).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>Well, two, if your OS also uses <a href="https://lwn.net/Articles/676831/" target="_blank">systemd</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>Microsoft hosts the <code>az</code> CLI docker images on its own registry, the <a href="https://github.com/microsoft/containerregistry" target="_blank">Microsoft Container Registry</a>, located at <a href="https://mcr.microsoft.com" target="_blank">https://mcr.microsoft.com</a>, so when pulling from it we have to use a <a href="https://windsock.io/referencing-docker-images/" target="_blank">qualified reference</a> to the image we want. If we wanted to explore the tags available for the <code>azure-cli</code> image, we could run<br />
+ <br />
+<code>curl -L https://mcr.microsoft.com/v2/azure-cli/tags/list</code>  <br />
+ <br />
+<a href="https://jeeweetje.net/2019/07/10/exploring-containers-in-the-microsoft-container-registry-with-visual-studio-code/" target="_blank">This</a> blog post suggests it also should be possible to explore the various repositories in the <a href="https://en.wikipedia.org/wiki/RAS_syndrome" target="_blank">MCR registry</a> from within the very nifty <a href="https://code.visualstudio.com/">Visual Studio Code</a> IDE, but I couldn’t get that to work, and Microsoft <a href="https://github.com/microsoft/containerregistry#faq" target="_blank">doesn’t seem</a> to want you to.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>Interestingly, if you look at the headers of the response from <code>mcr.microsoft.com</code>, using <code>curl -v</code>, the <code>Host</code> name is <code>openresty</code>, suggesting Microsoft’s registry is powered by the open source <a href="https://openresty.org/en/" target="_blank">OpenResty</a> variant of Nginx, which adds to Nginx the ability to make use of libraries written in LuaJIT. Or uses it as a reverse proxy, anyway. How things <a href="https://www.zdnet.com/article/ballmer-i-may-have-called-linux-a-cancer-but-now-i-love-it/" target="_blank">have changed</a> since the days of <a href="https://www.theregister.com/2001/06/02/ballmer_linux_is_a_cancer/" target="_blank">“Linux is a cancer”</a> (or, <a href="https://www.theregister.com/2000/07/31/ms_ballmer_linux_is_communism/" target="_blank">“communism”</a>) and <a href="https://en.wikipedia.org/wiki/Embrace,_extend,_and_extinguish" target="_blank">“Embrace, extend, extinguish”</a>! Hopefully.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>In the tradition of IT people giving things <a href="https://martinfowler.com/bliki/TwoHardThings.html" target="_blank">terrible</a> <a href="https://alexene.dev/2020/08/17/webassembly-without-the-browser-part-1.html#what-is-webassembly" target="_blank">names</a>, anonymous volumes are not actually anonymous (though they are volumes). They just are given a <a href="https://docs.docker.com/storage/#more-details-about-mount-types" target="_blank">randomly-generated</a> name when created – something euphonious and pleasant to read like <code>71bc263a17ab4233d9d966c42bdb060c026ce6531c00fa5a7b7329834fe01914</code> for instance.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</div>
+
+    
+    
+
+    
+
+    
+
+        <h4 class="page-header">Comments</h4><script defer src="https://cdn.commento.io/js/commento.js"
+  data-css-override="https://www.phlummox.dev/css/main.css"
+  data-auto-init="true"
+  ></script>
+<div id="commento"></div>
+
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted"><a rel='license' href='http://creativecommons.org/licenses/by/4.0/'><img alt='Creative Commons License' style='border-width:0' src='https://i.creativecommons.org/l/by/4.0/80x15.png' /></a><br />licensed under a <a rel='license' href='http://creativecommons.org/licenses/by/4.0/'>Creative Commons Attribution 4.0 International License</a>.<br /></a>.</p>
+
+        </footer>
+
+    </body>
+
+</html>
+
