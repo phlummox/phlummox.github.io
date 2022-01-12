@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Adb on phlummox</title>
+    <link>https://phlummox.dev/tags/adb/</link>
+    <description>Recent content in Adb on phlummox</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 12 Jan 2022 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://phlummox.dev/tags/adb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android command-line tools cheat sheet</title>
+      <link>https://phlummox.dev/post/android-cl-cheat-sheet/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://phlummox.dev/post/android-cl-cheat-sheet/</guid>
+      <description>A reminder to myself. I do work on Android apps rarely enough that I can never remember what the tools and commands are for different tasks &amp;ndash; so I started putting together a &amp;ldquo;cheat sheet&amp;rdquo; for my own use for Android dev–related command-line tools.
+Reddit post here, where someone pointed out this massively useful reference for adb commands.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,10 +6,28 @@
     <description>Recent content in Tags on phlummox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Jan 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://phlummox.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Adb</title>
+      <link>https://phlummox.dev/tags/adb/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://phlummox.dev/tags/adb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Android</title>
+      <link>https://phlummox.dev/tags/android/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://phlummox.dev/tags/android/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Azure</title>
@@ -44,6 +62,15 @@
       <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>https://phlummox.dev/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Command Line</title>
+      <link>https://phlummox.dev/tags/command-line/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://phlummox.dev/tags/command-line/</guid>
       <description></description>
     </item>
     

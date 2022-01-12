@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://phlummox.dev/post/android-cl-cheat-sheet/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://phlummox.dev/post/azure-in-docker/</loc>
     <lastmod>2020-08-17T00:00:00+00:00</lastmod>
   </url>
@@ -25,6 +30,18 @@
   <url>
     <loc>https://phlummox.dev/post/setting-up-ghcjs/</loc>
     <lastmod>2018-07-25T03:38:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://phlummox.dev/tags/adb/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://phlummox.dev/tags/android/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -53,6 +70,12 @@
   <url>
     <loc>https://phlummox.dev/tags/cloud/</loc>
     <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://phlummox.dev/tags/command-line/</loc>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -94,7 +117,7 @@
   
   <url>
     <loc>https://phlummox.dev/post/</loc>
-    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -106,13 +129,13 @@
   
   <url>
     <loc>https://phlummox.dev/tags/</loc>
-    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://phlummox.dev/</loc>
-    <lastmod>2020-08-17T00:00:00+00:00</lastmod>
+    <lastmod>2022-01-12T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

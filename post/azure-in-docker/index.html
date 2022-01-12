@@ -212,20 +212,20 @@ sap archived at <http://archive.is/8wq7h>
 <p>Taking Azure’s <code>az</code> tool as an example, you can do it like so:</p>
 <ol type="1">
 <li><p>Pull the Docker image (based on Alpine Linux) for the <code>az</code> CLI tool:<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a><span class="ex">docker</span> pull mcr.microsoft.com/azure-cli</span></code></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull mcr.microsoft.com/azure-cli</span></code></pre></div></li>
 <li><p>Create a docker volume which will hold the contents of the <code>/root</code> directory, which is where our credentials are stored:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">docker</span> -D run -v /root --name azconfig mcr.microsoft.com/azure-cli</span></code></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> <span class="at">-D</span> run <span class="at">-v</span> /root <span class="at">--name</span> azconfig mcr.microsoft.com/azure-cli</span></code></pre></div></li>
 </ol>
 <p>We now have a stopped Docker container called <code>azconfig</code>, containing an anonymous volume<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> which contains the contents of the <code>/root</code> directory. We can use the volume by supplying <code>--volumes-from azconfig</code> as an argument to the <code>docker run</code> command.</p>
 <p>(Note that we don’t supply <code>--rm</code> as an argument this first time round, since we want to actually <em>keep</em> the container and its attached volume.)</p>
 <ol start="3" type="1">
 <li><p>Spin up a new container which mounts the volume from our <code>azconfig</code> one:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="ex">docker</span> run --rm -it --volumes-from azconfig mcr.microsoft.com/azure-cli</span></code></pre></div></li>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--rm</span> <span class="at">-it</span> <span class="at">--volumes-from</span> azconfig mcr.microsoft.com/azure-cli</span></code></pre></div></li>
 </ol>
 <p>This time we <em>do</em> use the <code>--rm</code> argument: we don’t care if this container disappears, the credentials will be stored in the volume.</p>
 <ol start="4" type="1">
 <li><p>Inside the container, we can run</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true"></a><span class="ex">az</span> login</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">az</span> login</span></code></pre></div>
 <p>to log on. The tool displays a message like</p>
 <div class="web-login" style="color: #AA5500 !important; font-family: monospace;">
 <p>To sign in, use a web browser to open the page <a href="https://microsoft.com/devicelogin" style="color: #AA5500 !important; font-family: monospace;">https://microsoft.com/devicelogin</a> and enter the code XXXXXXXXX to authenticate.</p>

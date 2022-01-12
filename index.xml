@@ -6,10 +6,20 @@
     <description>Recent content on phlummox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 17 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 12 Jan 2022 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://phlummox.dev/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Android command-line tools cheat sheet</title>
+      <link>https://phlummox.dev/post/android-cl-cheat-sheet/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://phlummox.dev/post/android-cl-cheat-sheet/</guid>
+      <description>A reminder to myself. I do work on Android apps rarely enough that I can never remember what the tools and commands are for different tasks &amp;ndash; so I started putting together a &amp;ldquo;cheat sheet&amp;rdquo; for my own use for Android dev–related command-line tools.
+Reddit post here, where someone pointed out this massively useful reference for adb commands.</description>
+    </item>
     
     <item>
       <title>Running Azure&#39;s &lt;samp&gt;az&lt;/samp&gt; command-line tool from a docker container; or, the &#34;credentials in a container&#34; trick

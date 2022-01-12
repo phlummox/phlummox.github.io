@@ -180,12 +180,12 @@
 <p>A reminder to myself on how to install the Travis CLI command-line tool on Ubuntu (which is the only time I ever make use of Ruby, and which I only ever do when installing a fresh OS).</p>
 <ol type="1">
 <li><p>Install Ruby.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true"></a>$ <span class="fu">sudo</span> apt install ruby ruby-dev</span></code></pre></div></li>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sudo apt install ruby ruby-dev</span></code></pre></div></li>
 <li><p>Install the Travis gem.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true"></a><span class="ex">gem</span> install --user-install travis</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">gem</span> install <span class="at">--user-install</span> travis</span></code></pre></div>
 <p>The output of this will include a warning that “You don’t have <code>/home/​phlummox/​.gem/​ruby/​2.5.0/​bin</code> [or something similar] in your PATH, gem executables will not run”.</p></li>
 <li><p>So ensure it’s added next time you log in:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a>$ <span class="bu">echo</span> <span class="st">&#39;PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH&#39;</span> <span class="op">&gt;&gt;</span> ~/.profile</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> echo <span class="st">&#39;PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH&#39;</span> <span class="op">&gt;&gt;</span> ~/.profile</span></code></pre></div>
 <p>(And <code>source ~/.profile</code>, to update your path right now.)</p></li>
 <li><p>Run <code>travis login</code>, <strong>OR</strong> (more likely) <code>travis login --pro</code>, to authenticate with the Travis CLI servers using GitHub. The former logs you in to <a href="https://travis-ci.org/">travis-ci.org</a>, the latter to <a href="https://travis-ci.com/">travis-ci.com</a>; the <code>.org</code> server will eventually be deprecated, IIRC.</p></li>
 <li><p>Do whatever Travis-related task you needed to do. Probably, something like</p>
