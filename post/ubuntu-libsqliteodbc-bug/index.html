@@ -63,7 +63,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.47.1" />
+ <meta name="generator" content="Hugo 0.92.1" />
         
 
         
@@ -173,38 +173,32 @@
 
 
     <br> <div class="text-left single-content"  ><p>Putting this here so I can find it again&hellip;</p>
-
-<p>On Ubuntu 16.04, <code>libsqliteodbc</code><sup class="footnote-ref" id="fnref:odbc"><a href="#fn:odbc">1</a></sup>  installs dynamic library files
-to the wrong directory.<sup class="footnote-ref" id="fnref:alt"><a href="#fn:alt">2</a></sup></p>
-
+<p>On Ubuntu 16.04, <code>libsqliteodbc</code><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>  installs dynamic library files
+to the wrong directory.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 <p>Instead of putting <code>libsqlite3odbc.so</code> in <code>/usr/lib/x86_64-linux-gnu</code>,
 it puts it in a subdirectory, <code>odbc</code>.  And then
-<code>libreoffice-base</code><sup class="footnote-ref" id="fnref:lobase"><a href="#fn:lobase">3</a></sup> looks for it in the normal place and can&rsquo;t
+<code>libreoffice-base</code><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> looks for it in the normal place and can&rsquo;t
 find it, leading to runtime errors if you try to connect via ODBC to an
 Sqlite3 database:</p>
-
-<pre><code class="language-text">The connection to the data source &quot;MY_DATA_SOURCE&quot; could not be established.
-[unixODBC][Driver Manager]Can't open lib 'libsqlite3odbc.so': file not found
-</code></pre>
-
-<p>So a fix is to install a symlink in the normal directory, pointing to
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">The connection to the data source &#34;MY_DATA_SOURCE&#34; could not be established.
+[unixODBC][Driver Manager]Can&#39;t open lib &#39;libsqlite3odbc.so&#39;: file not found
+</code></pre></div><p>So a fix is to install a symlink in the normal directory, pointing to
 the installed <code>.so</code> file:</p>
-
-<pre><code class="language-bash">$ sudo ln -s odbc/libsqlite3odbc.so /usr/lib/x86_64-linux-gnu
-</code></pre>
-<div class="footnotes">
-
-<hr />
-
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo ln -s odbc/libsqlite3odbc.so /usr/lib/x86_64-linux-gnu
+</code></pre></div><section class="footnotes" role="doc-endnotes">
+<hr>
 <ol>
-<li id="fn:odbc">version <a href="https://packages.ubuntu.com/xenial/libsqliteodbc">0.9992-0.1</a>
- <a class="footnote-return" href="#fnref:odbc"><sup>[return]</sup></a></li>
-<li id="fn:alt">Or, alternatively, <code>libreoffice-base</code> is looking in the wrong place. But there seems no good reason to install the library files to a subdirectory.
- <a class="footnote-return" href="#fnref:alt"><sup>[return]</sup></a></li>
-<li id="fn:lobase">version  <a href="https://launchpad.net/ubuntu/+source/libreoffice/1:5.1.6~rc2-0ubuntu1~xenial10">1:5.1.6~rc2-0ubuntu1~xenial10</a>
- <a class="footnote-return" href="#fnref:lobase"><sup>[return]</sup></a></li>
+<li id="fn:1" role="doc-endnote">
+<p>version <a href="https://packages.ubuntu.com/xenial/libsqliteodbc">0.9992-0.1</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Or, alternatively, <code>libreoffice-base</code> is looking in the wrong place. But there seems no good reason to install the library files to a subdirectory.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>version  <a href="https://launchpad.net/ubuntu/+source/libreoffice/1:5.1.6~rc2-0ubuntu1~xenial10">1:5.1.6~rc2-0ubuntu1~xenial10</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
 </ol>
-</div>
+</section>
 </div>
 
     

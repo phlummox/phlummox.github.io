@@ -7,7 +7,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Buzzword Compliance</title>
+        <title>Backing Things Up</title>
         
         <link rel="icon" type="image/png" href="https://www.phlummox.dev/images/some-random-icon.png">
         <style>
@@ -63,10 +63,8 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.47.1" />
+ <meta name="generator" content="Hugo 0.92.1" />
         
-        <link href="https://phlummox.dev/tags/buzzword-compliance/index.xml" rel="alternate" type="application/rss+xml" title="phlummox" />
-        <link href="https://phlummox.dev/tags/buzzword-compliance/index.xml" rel="feed" type="application/rss+xml" title="phlummox" />
 
         
     </head>
@@ -158,9 +156,7 @@
 
 <main>
 
-    <h2>Buzzword Compliance</h2>
-
-     <div class="item">
+    <div class="item">
 
     
     
@@ -169,30 +165,52 @@
     
     
 
-    <h4><a href="/post/azure-in-docker/">Running Azure&rsquo;s <samp>az</samp> command-line tool from a docker container; or, the &ldquo;credentials in a container&rdquo; trick</a></h4>
-    <h5>August 17, 2020</h5>
+    <h4><a href="/post/backing-things-up/">Backing Things Up</a></h4>
+    <h5>February 10, 2022</h5>
     
-    <a href="https://phlummox.dev/tags/azure"><kbd class="item-tag">azure</kbd></a>
+    <a href="https://phlummox.dev/tags/backups"><kbd class="item-tag">backups</kbd></a>
     
-    <a href="https://phlummox.dev/tags/docker"><kbd class="item-tag">docker</kbd></a>
-    
-    <a href="https://phlummox.dev/tags/container"><kbd class="item-tag">container</kbd></a>
-    
-    <a href="https://phlummox.dev/tags/cli"><kbd class="item-tag">cli</kbd></a>
+    <a href="https://phlummox.dev/tags/home"><kbd class="item-tag">home</kbd></a>
     
     <a href="https://phlummox.dev/tags/cloud"><kbd class="item-tag">cloud</kbd></a>
     
-    <a href="https://phlummox.dev/tags/cyber"><kbd class="item-tag">cyber</kbd></a>
-    
-    <a href="https://phlummox.dev/tags/buzzword-compliance"><kbd class="item-tag">buzzword-compliance</kbd></a>
-    
 
 </div>
- 
+
+
+    <br> <div class="text-left single-content"  ><p><a href="https://www.reddit.com/user/bigheadsmith">/u/bigheadsmith</a> just <a href="https://www.reddit.com/r/homelab/comments/sp0di5/local_and_remote_backups/">asked on Reddit</a>
+about good solutions for local and remote backups
+for home PCs &ndash; so I offered an outline of my current backup regime. Only a couple
+of responses so far, but suggestions seem to converge around <a href="https://rclone.org"><code>rclone</code></a> and
+<a href="https://restic.net"><code>restic</code></a> being good solutions on Linux. Restic also received a lot
+of enthusiastic support on a recent-ish <a href="https://news.ycombinator.com/item?id=29209455#29210323">Hacker News post</a>, with some
+users saying they&rsquo;d switched to restic from borg.</p>
+<p>If you&rsquo;re on Ubuntu, a downside of <code>restic</code> is that the versions of it in the
+Ubuntu LTSs lag terribly behind upstream. My solution is to cobble together
+quick-and-dirty <code>.deb</code> files that include recent fixes &ndash; that way, I can still easily
+track what&rsquo;s been installed where with <code>dpkg</code> and <code>apt</code>.
+I do also now have the onus of keeping up to date with upstream myself, but
+luckily, <code>restic</code> doesn&rsquo;t seem to have new versions released <em>all</em> that frequently.
+Thus, I&rsquo;ve got a quick-and-dirty <code>.deb</code> version of <a href="https://github.com/phlummox-dev/restic-deb"><code>restic</code></a>
+on GitHub, and a friendly fork of <a href="https://github.com/phlummox-patches/backupninja"><code>backupninja</code></a> with recent
+bug fixes applied.</p>
+</div>
+
+    
+    
+
+    
+
+    
+
+        <h4 class="page-header">Comments</h4><script defer src="https://cdn.commento.io/js/commento.js"
+  data-css-override="https://www.phlummox.dev/css/main.css"
+  data-auto-init="true"
+  ></script>
+<div id="commento"></div>
+
 
 </main>
-
-
 
         <footer>
 

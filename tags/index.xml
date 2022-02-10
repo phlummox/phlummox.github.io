@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on phlummox</title>
@@ -6,13 +6,36 @@
     <description>Recent content in Tags on phlummox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Jan 2022 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://phlummox.dev/tags/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 10 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://phlummox.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>backups</title>
+      <link>https://phlummox.dev/tags/backups/</link>
+      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://phlummox.dev/tags/backups/</guid>
+      <description></description>
+    </item>
     
     <item>
-      <title>Adb</title>
+      <title>cloud</title>
+      <link>https://phlummox.dev/tags/cloud/</link>
+      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://phlummox.dev/tags/cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>home</title>
+      <link>https://phlummox.dev/tags/home/</link>
+      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://phlummox.dev/tags/home/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>adb</title>
       <link>https://phlummox.dev/tags/adb/</link>
       <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -21,7 +44,7 @@
     </item>
     
     <item>
-      <title>Android</title>
+      <title>android</title>
       <link>https://phlummox.dev/tags/android/</link>
       <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -30,43 +53,7 @@
     </item>
     
     <item>
-      <title>Azure</title>
-      <link>https://phlummox.dev/tags/azure/</link>
-      <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://phlummox.dev/tags/azure/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Buzzword Compliance</title>
-      <link>https://phlummox.dev/tags/buzzword-compliance/</link>
-      <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://phlummox.dev/tags/buzzword-compliance/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cli</title>
-      <link>https://phlummox.dev/tags/cli/</link>
-      <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://phlummox.dev/tags/cli/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Cloud</title>
-      <link>https://phlummox.dev/tags/cloud/</link>
-      <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://phlummox.dev/tags/cloud/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Command Line</title>
+      <title>command-line</title>
       <link>https://phlummox.dev/tags/command-line/</link>
       <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
       
@@ -75,7 +62,25 @@
     </item>
     
     <item>
-      <title>Container</title>
+      <title>azure</title>
+      <link>https://phlummox.dev/tags/azure/</link>
+      <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://phlummox.dev/tags/azure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cli</title>
+      <link>https://phlummox.dev/tags/cli/</link>
+      <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://phlummox.dev/tags/cli/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>container</title>
       <link>https://phlummox.dev/tags/container/</link>
       <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
       
@@ -84,25 +89,7 @@
     </item>
     
     <item>
-      <title>Cyber</title>
-      <link>https://phlummox.dev/tags/cyber/</link>
-      <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://phlummox.dev/tags/cyber/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Development</title>
-      <link>https://phlummox.dev/tags/development/</link>
-      <pubDate>Wed, 25 Jul 2018 03:38:32 +0800</pubDate>
-      
-      <guid>https://phlummox.dev/tags/development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Docker</title>
+      <title>docker</title>
       <link>https://phlummox.dev/tags/docker/</link>
       <pubDate>Mon, 17 Aug 2020 00:00:00 +0000</pubDate>
       
@@ -111,7 +98,16 @@
     </item>
     
     <item>
-      <title>Ghcjs</title>
+      <title>development</title>
+      <link>https://phlummox.dev/tags/development/</link>
+      <pubDate>Wed, 25 Jul 2018 03:38:32 +0800</pubDate>
+      
+      <guid>https://phlummox.dev/tags/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ghcjs</title>
       <link>https://phlummox.dev/tags/ghcjs/</link>
       <pubDate>Wed, 25 Jul 2018 03:38:32 +0800</pubDate>
       
@@ -120,7 +116,7 @@
     </item>
     
     <item>
-      <title>Haskell</title>
+      <title>haskell</title>
       <link>https://phlummox.dev/tags/haskell/</link>
       <pubDate>Wed, 25 Jul 2018 03:38:32 +0800</pubDate>
       
@@ -129,7 +125,7 @@
     </item>
     
     <item>
-      <title>Stack</title>
+      <title>stack</title>
       <link>https://phlummox.dev/tags/stack/</link>
       <pubDate>Wed, 25 Jul 2018 03:38:32 +0800</pubDate>
       

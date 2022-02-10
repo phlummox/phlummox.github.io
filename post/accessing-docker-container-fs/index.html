@@ -63,7 +63,7 @@
 
 
 <script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.47.1" />
+ <meta name="generator" content="Hugo 0.92.1" />
         
 
         
@@ -177,51 +177,38 @@ trick</a> for accessing the
 filesystem of a running Docker container from your host machine. Not
 especially safe, but much quicker than messing around with ssh servers
 etc. within the container.</p>
-
 <p>So, within the <em><code>proc</code></em>
 filesystem, <code>/proc/<em>some-pid</em>/root/</code>
 exposes the root filesystem that process <code><em>some-pid</em></code> is running
 on. So we can do the following, to get an interactive shell on that
 filesystem:</p>
-
 <ol>
-<li><p>Find some process that’s running inside the container, that we can uniquely identify. (In the following example, we assume java is running nowhere else but inside the container.)</p></li>
-
-<li><p>Run the following:</p>
-
-<pre><code>&gt; sudo -s
+<li>
+<p>Find some process that’s running inside the container, that we can uniquely identify. (In the following example, we assume java is running nowhere else but inside the container.)</p>
+</li>
+<li>
+<p>Run the following:</p>
+<pre tabindex="0"><code>&gt; sudo -s
 &gt; cd /proc/$(pgrep java)/root/
 </code></pre></li>
 </ol>
-
 <p>And voilà, we&rsquo;re in.</p>
-
 <p>We can also mount that filesystem somewhere more convenient. There are
 probably better ways, but mine is: given a directory
 <code>/proc/</code><em><code>some-pid</code></em><code>/root/</code>, we can execute</p>
-
-<pre><code>  &gt; sudo df -h /proc/some-pid/root/
-</code></pre>
-
-<p>to get the path to the device being used for process
+<pre tabindex="0"><code>  &gt; sudo df -h /proc/some-pid/root/
+</code></pre><p>to get the path to the device being used for process
 <em><code>some-pid</code></em>&rsquo;s filesystem (normally, an image file sitting under
 <code>/var/lib/docker</code>). For instance:</p>
-
-<pre><code> &gt; sudo df -h /proc/16503/root/
+<pre tabindex="0"><code> &gt; sudo df -h /proc/16503/root/
  Filesystem      Size  Used Avail Use% Mounted on
  overlay         1.6T  269G  1.4T  17% /var/lib/docker/overlay2/d69311eb816371025cf40a7832689180f7805a685badc14a2e84db704d1cbb9f/merged
-</code></pre>
-
-<p>We can then mount that somewhere else using:</p>
-
-<pre><code>&gt; sudo mount --bind /var/lib/docker/overlay2/d69311eb816371025cf40a7832689180f7805a685badc14a2e84db704d1cbb9f/merged /some/where/convenient
-</code></pre>
-
-<p>This means that if we&rsquo;re trying to debug or analyse what&rsquo;s happening in
+</code></pre><p>We can then mount that somewhere else using:</p>
+<pre tabindex="0"><code>&gt; sudo mount --bind /var/lib/docker/overlay2/d69311eb816371025cf40a7832689180f7805a685badc14a2e84db704d1cbb9f/merged /some/where/convenient
+</code></pre><p>This means that if we&rsquo;re trying to debug or analyse what&rsquo;s happening in
 the container, we can now do so with all the resources available on our
 host machine (GUI tools, binary analysis tools) without having to
 install them in the container.</p>
-
 <p>(See also: <a href="https://superuser.com/questions/1288055/file-explorer-gui-for-a-running-docker-container#1288058">File explorer GUI for a running docker
 container?</a>
 on Super User.)</p>

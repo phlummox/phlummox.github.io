@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on phlummox</title>
@@ -6,10 +6,15 @@
     <description>Recent content in Posts on phlummox</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Jan 2022 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://phlummox.dev/post/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Thu, 10 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://phlummox.dev/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Backing Things Up</title>
+      <link>https://phlummox.dev/post/backing-things-up/</link>
+      <pubDate>Thu, 10 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://phlummox.dev/post/backing-things-up/</guid>
+      <description>/u/bigheadsmith just asked on Reddit about good solutions for local and remote backups for home PCs &amp;ndash; so I offered an outline of my current backup regime. Only a couple of responses so far, but suggestions seem to converge around rclone and restic being good solutions on Linux. Restic also received a lot of enthusiastic support on a recent-ish Hacker News post, with some users saying they&amp;rsquo;d switched to restic from borg.</description>
+    </item>
     
     <item>
       <title>Android command-line tools cheat sheet</title>
@@ -52,7 +57,7 @@ gem install --user-install travis The output of this will include a warning that
       <description>Putting this here so I can find it again&amp;hellip;
 On Ubuntu 16.04, libsqliteodbc1 installs dynamic library files to the wrong directory.2
 Instead of putting libsqlite3odbc.so in /usr/lib/x86_64-linux-gnu, it puts it in a subdirectory, odbc. And then libreoffice-base3 looks for it in the normal place and can&amp;rsquo;t find it, leading to runtime errors if you try to connect via ODBC to an Sqlite3 database:
-The connection to the data source &amp;quot;MY_DATA_SOURCE&amp;quot; could not be established.</description>
+The connection to the data source &amp;#34;MY_DATA_SOURCE&amp;#34; could not be established.</description>
     </item>
     
     <item>
@@ -63,7 +68,7 @@ The connection to the data source &amp;quot;MY_DATA_SOURCE&amp;quot; could not b
       <guid>https://phlummox.dev/post/accessing-docker-container-fs/</guid>
       <description>Well that&amp;rsquo;s neat &amp;mdash; there&amp;rsquo;s a quick-and-dirty trick for accessing the filesystem of a running Docker container from your host machine. Not especially safe, but much quicker than messing around with ssh servers etc. within the container.
 So, within the proc filesystem, /proc/some-pid/root/ exposes the root filesystem that process some-pid is running on. So we can do the following, to get an interactive shell on that filesystem:
- Find some process that’s running inside the container, that we can uniquely identify.</description>
+  Find some process that’s running inside the container, that we can uniquely identify.</description>
     </item>
     
     <item>
