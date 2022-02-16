@@ -1,0 +1,35 @@
+---
+permalink: "feed.xml"
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ siteinfo.title }}</title>
+  <subtitle>{{ siteinfo.subtitle }}</subtitle>
+  <rights>Copyright (c) {% year %} {{siteinfo.author}}</rights>
+  <link rel="self"  href="{{siteinfo.site_url + page.url.substring(1) }}" />
+  <link href="{{ siteinfo.site_url }}"/>
+  <updated>{{ collections.post | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
+  <id>{{ siteinfo.site_url }}</id>
+  <author>
+    <name>{{ siteinfo.author }}</name>
+    <uri>{{ siteinfo.site_url }}</uri>
+  </author>
+  {%- for post in collections.post | reverse %}
+  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(siteinfo.site_url) }}{% endset %}
+  <entry>
+    <title>{{ post.data.title | stripTitle}}</title>
+    <author>
+      <name>{{ siteinfo.author if (author == null) else author }}</name>
+      <uri>{{ siteinfo.site_url }}</uri>{# a cheat... #}
+    </author>
+    <link href="{{ absolutePostUrl }}"/>
+    <published>{{ post.date | dateToRfc3339 }}</published>
+    <updated>{{ post.date | dateToRfc3339 }}</updated>
+    <id>{{ absolutePostUrl }}</id>
+    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}&lt;br&gt; Posted by {{ siteinfo.author if (author == null) else author }}</content>
+  </entry>
+  {%- endfor %}
+</feed>
+{# vim: syntax=xml :
+#}

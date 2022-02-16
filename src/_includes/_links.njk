@@ -1,0 +1,18 @@
+{# links to stylesheets, sitemaps, favicons, rss etc go in this file.
+#}
+  <link rel="canonical"   href="{{siteinfo.site_url + page.url.substring(1) }}" />
+  <link rel="alternate"   href="{{siteinfo.site_url + 'feed.xml'}}" type="application/atom+xml" title="{{siteinfo.title}}">
+
+  <link rel="sitemap"     href="{{ siteinfo.site_url }}sitemap.xml" type="application/xml" title="Sitemap" />
+  <link rel="icon"        href="{{ '/images/phlummox-icon.png' | url }}" type="image/png" />
+  <link rel="stylesheet"  href="{{ '/css/main.css'      | url }}" />
+
+  {#- preconnect to speed up font download #}
+  <link rel="preconnect"  href="https://fonts.gstatic.com/" />
+  <link rel="preconnect"  href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet"  href="https://fonts.googleapis.com/css?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+
+  <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+{#- vim: syntax=markdown
+#}

@@ -1,28 +1,22 @@
 ---
-title: "Home page"
+title: "posts"
 layout: base-layout.njk
 pagination:
   data: collections.post
-  size: 3
+  size: 4
   reverse: true
   alias: posts
 customStyle: |
   .post-item {
-    margin-top: 2.5em;
+    margin-top: 3.5em;
   }
 ---
 
-# Phlummox's blog
-
-Random posts and musings. Usually on software development or computer science–related
-topics.
-<br><br>
-
-## Some recent posts
+# Posts
 
 {%- from 'postslist_macro.njk' import postlist_macro -%}
 
-{{ postlist_macro(posts, 'h3') }}
+{{ postlist_macro(posts, 'h2') }}
 
 {% include '_nav_arrows.njk' %}
 

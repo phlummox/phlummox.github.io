@@ -1,0 +1,318 @@
+{# inline styles go in this file
+#}
+<!-- portion of bootstrap.css -->
+<style>
+/*!
+ * Bootstrap v3.4.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+a:active,
+a:hover {
+  outline: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #23527c;
+  text-decoration: underline;
+}
+a:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.nav {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.nav > li {
+  position: relative;
+  display: block;
+}
+.nav > li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+.nav > li > a:hover,
+.nav > li > a:focus {
+  text-decoration: none;
+  background-color: #eeeeee;
+}
+
+.navbar-fixed-top {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.navbar-fixed-top {
+  top: 0;
+  border-width: 0 0 1px;
+}
+
+.navbar-brand {
+  height: 50px;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  text-decoration: none;
+}
+
+.navbar-toggle {
+  padding: 9px 10px;
+  margin-right: 15px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background-color: transparent;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.navbar-toggle:focus {
+  outline: 0;
+}
+.navbar-toggle .icon-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 1px;
+}
+.navbar-toggle .icon-bar + .icon-bar {
+  margin-top: 4px;
+}
+@media (min-width: 768px) {
+  .navbar-toggle {
+    display: none;
+  }
+}
+.navbar-nav {
+  margin: 7.5px -15px;
+}
+.navbar-nav > li > a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 20px;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    margin: 0;
+  }
+
+  .navbar-nav > li > a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+}
+
+.navbar-toggle {
+  border-color: #dddddd;
+}
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+  background-color: #dddddd;
+}
+.navbar-toggle .icon-bar {
+  background-color: #888888;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+.visible-xs
+{
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .visible-xs {
+    display: block !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .visible-sm {
+    display: block !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+</style>
+<!-- end content adapted from bootstrap.css -->
+<!-- navbar styling -->
+<style>
+nav {
+  padding: 0 15px;
+  border-top: var(--border-width) solid var(--accent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+  background-color: #f8f8f8;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+nav * {
+  list-style: none;
+}
+
+nav li {
+    position: relative;
+    /* ^^^ needed ?? */
+    display: block;
+}
+
+nav .navbar-brand
+{
+    color: #777777 !important;
+}
+
+nav li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+nav .navbar-body {
+    border-color: #e7e7e7;
+    border-top-width: 1px;
+    border-top-style: solid;
+    max-height: 340px;
+
+    align-items: center;
+}
+
+nav .navnew-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav li > a {
+  color: #777777;
+}
+nav li > a:link, nav li > a:visited {
+  color: #777777;
+}
+
+nav li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+}
+
+nav .nav-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.nav-menu > * {
+  margin: 0;
+  width: 100%;
+}
+
+nav .toggle {
+  order: 1;
+}
+
+{# max width is main + 400 #}
+nav .navbar-body {
+  display: flex;
+  max-width: 1150px;
+}
+
+nav ul {
+  display: flex;
+}
+
+
+/* big */
+@media (min-width: 768px) {
+  nav .navbar-body {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .nav-links-lefty {
+    flex-direction: row;
+  }
+}
+
+/* small */
+@media (max-width: 767px) {
+  nav .navbar-body {
+    flex-direction: column;
+  }
+  .nav-links-lefty {
+    flex-direction: column;
+  }
+}
+
+</style>
+<!-- local theme -->
+<style>
+  html body {
+      font-family: 'Raleway', sans-serif;
+      background-color: white;
+  }
+
+  :root {
+      --accent: {{siteinfo.accent}};
+      --border-width:  5px ;
+  }
+
+{#- TODO:
+ # use only if you want a gradient from top to bottom on navbar.
+ # and if you do -- you will want a color more obvious than
+ # white to very-nearly-white (#f8f8f8)
+nav {
+  background-image: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%);
+  background-repeat: repeat-x;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+}
+#}
+</style>
+{# any custom rules a particular page specifies
+ # in front-matter
+ -#}
+{% if customStyle != null %}
+<style>
+{{ customStyle | safe }}
+</style>
+{% endif %}
+{#- vim: syntax=css :
+#}

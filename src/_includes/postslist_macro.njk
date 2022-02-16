@@ -1,0 +1,49 @@
+{#
+Display a list of posts.
+Arguments: a list of posts; headerTag (e.g. string 'h1')
+  to use for each post.
+Can produce post lists with this in front-matter:
+```
+pagination:
+  data: collections.post
+  size: 2
+  reverse: true
+  alias: posts
+```
+
+Each item has class 'post-item' if you want to do custom spacing.
+#}
+{% macro postlist_macro(posts, headerTag) %}
+  {% for post in posts %}
+  <div itemscope itemtype = "http://schema.org/BlogPosting" class="post-item">
+    <meta itemprop="headline" content="{{post.data.title | stripTitle}}" />
+    <meta itemprop="author"   content="{{post.data.author}}" />
+    <{{ headerTag }} itemprop="name">
+      <a href="{{ post.url | url }}" itemprop="url">{{ post.data.title | safe }}</a>
+    </{{ headerTag }}>
+    <div style="font-weight: 500;" >
+      <time datetime="{{ post.date | dateIso }}" itemprop="datePublished">{{ post.date | dateReadable }}</time>
+    </div>
+    <div>
+    <meta itemprop="keywords" content="{{post.data.tags | only_normal_tags | join(', ')}}" />
+    {%- set rendered_keywords = [] %}
+    {%- for keyword in (post.data.tags | only_normal_tags)  %}
+      {%- set the_url = ('/tags/' + keyword) | url %}
+      {%- set res = "<a href='"
+                    + the_url
+                    + "'><kbd class='item-tag'>"
+                    + keyword
+                    + "</kbd></a>"
+      %}
+      {%- set rendered_keywords = (rendered_keywords.push(res), rendered_keywords) %}
+    {%- endfor %}
+    {{ rendered_keywords | join(" ") | safe }}
+    </div>
+
+    <span style="word-break: break-word;">{% excerpt post %}</span>
+  </div>
+  {% endfor %}
+{% endmacro %}
+
+{# vim: syntax=markdown :
+#}

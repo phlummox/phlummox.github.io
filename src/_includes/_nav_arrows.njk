@@ -1,0 +1,29 @@
+{#
+Display previous and next nav arrows
+for a pagination thru a collection.
+
+Assumes we have a pagination, e.g.
+```
+pagination:
+  data: collections.post
+  size: 2
+  reverse: true
+  alias: posts
+```
+#}
+
+<div class="pages">
+{% if pagination.href.previous != null -%}
+  <a class="icon pages-icon" href="{{ pagination.href.previous | url }}" rel="prev" aria-label="previous page" >
+      <i class="fa fa-arrow-left"></i>
+  </a>
+{%- endif %}
+{% if pagination.href.next != null -%}
+  <a class="icon pages-icon" href="{{ pagination.href.next | url }}" rel="next" aria-label="next page" >
+      <i class="fa fa-arrow-right"></i>
+  </a>
+{%- endif %}
+</div>
+
+{# vim: syntax=markdown :
+#}
