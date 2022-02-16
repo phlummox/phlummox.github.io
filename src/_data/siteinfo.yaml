@@ -1,0 +1,51 @@
+title: "phlummox's blog"
+subtitle: "random posts and musings"
+description: "phlummox personal blog"
+repository: "phlummox/phlummox.github.io"
+timezone: "Australia/Perth"
+language: "en"
+keywords: ["computer science", "blog", "personal"]
+author: "phlummox"
+site_url: "https://phlummox.dev/"
+accent: "#447db9"
+google_site_verification_code: "PwRmljegtbdwAY0IXp87X_n1jKLbTS6DxB5Z-WOonEU"
+
+main_menu:
+- url: "/"
+  name: "Home"
+  weight: 1
+- url: "/posts/"
+  name: "Posts"
+  weight: 2
+- url: "/tags/"
+  name: "Tags"
+  weight: 3
+
+icon_menu:
+  # base64-encoded "github.io @ phlummox.dev"
+- url: "mailto:Z2l0aHViLmlvQHBobHVtbW94LmRldg=="
+  name: "envelope-o"
+  weight: 1
+  description: "email address"
+
+- url: "https://github.com/phlummox/"
+  name: "github"
+  weight: 2
+  description: "github profile"
+
+- url: "https://twitter.com/phlummox/"
+  name: "twitter"
+  weight: 3
+  description: "twitter profile"
+
+- url: "https://stackoverflow.com/users/6818792/phlummox/"
+  name: "stack-overflow"
+  weight: 4
+  description: "stackoverflow profile"
+
+- url: "https://www.reddit.com/user/phlummox/"
+  name: "reddit"
+  weight: 5
+  description: "reddit profile"
+
+
