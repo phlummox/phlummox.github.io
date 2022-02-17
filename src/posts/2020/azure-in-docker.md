@@ -17,11 +17,6 @@ customStyle: |
   }
 ---
 
-<!--
-draft: true
--->
-
-
 Every cloud platform provider has their own CLI tool they want you to
 install, all with different dependencies and install methods.
 

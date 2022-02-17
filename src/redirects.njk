@@ -1,0 +1,57 @@
+---js
+{
+  // create redirections, for specified pages
+  // (see the redirects_needed_for value of the pagination
+  // obj)
+  // from old location to new.
+  pagination: {
+    data: "collections.all",
+    size: 1,
+    alias: "new_page",
+    addAllPagesToCollections: false,
+    before: function(pages) {
+      let pagin = this;
+      pages = pages.filter(page => pagin.redirects_needed_for.includes(page.inputPath))
+      let res = []
+      for(let i = 0; i < pages.length; i += 1) {
+        let page = pages[i]
+        // e.g. redirection from
+        //    "/post/accessing-docker-container-fs/index.html" 
+        // -> "/posts/2018/accessing-docker-container-fs/index.html"
+        let last_component = page.url.slice(0, -1).split('/').slice(-1)[0]
+        let old_path = '/post/' + last_component + '/index.html'
+        page.old_path_to_redirect = old_path
+        res.push( page )
+      }
+      return res;
+    },
+    redirects_needed_for: [
+      "/src/posts/2018/accessing-docker-container-fs.md",
+      "/src/posts/2018/setting-up-ghcjs.md",
+      "/src/posts/2020/azure-in-docker.md",
+      "/src/posts/2020/installing-travis-cli.md",
+      "/src/posts/2020/ubuntu-libsqliteodbc-bug.md",
+      "/src/posts/2022/android-cl-cheat-sheet.md",
+      "/src/posts/2022/backing-things-up.md",
+    ],
+  },
+  permalink: "{{ new_page.old_path_to_redirect }}",
+}
+---
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting&hellip;</title>
+  <link rel="canonical" href="{{ new_page.url | url }}">
+  <script>location="{{ new_page.url | url }}"</script>
+  <meta http-equiv="refresh" content="0; url={{ new_page.url | url }}">
+  <meta name="robots" content="noindex">
+</head>
+<body>
+  <h1>Redirecting&hellip;</h1>
+  <a href="{{ new_page.url | url }}">Click here if you are not redirected.</a>
+</body>
+</html>
+{#- vim: syntax=javascript
+#}

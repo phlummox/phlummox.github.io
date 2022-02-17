@@ -1,11 +1,6 @@
 ---
 title: "Home page"
 layout: base-layout.njk
-pagination:
-  data: collections.post
-  size: 3
-  reverse: true
-  alias: posts
 customStyle: |
   .post-item {
     margin-top: 2.5em;
@@ -20,11 +15,18 @@ topics.
 
 ## Some recent posts
 
-{%- from 'postslist_macro.njk' import postlist_macro -%}
+Below are some recent blog posts. You can find [more posts here]({{ '/posts/' | url }}).
 
-{{ postlist_macro(posts, 'h3') }}
+{% set sortedPosts = (collections.post | sortByDate | reverse) %}
+{% set recentPosts = sortedPosts.slice(0,2) %}
 
-{% include '_nav_arrows.njk' %}
+{%- from 'postslist_macro.njk' import postslist_macro -%}
+
+{{ postslist_macro(page, recentPosts, 'h3') }}
+
+<a class="icon pages-icon" href="{{ '/posts/' | url }}" rel="next" aria-label="more posts" >
+    <i class="fa fa-arrow-right"></i>
+</a>
 
 {# vim: syntax=markdown :
 #}

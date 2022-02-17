@@ -13,7 +13,9 @@ pagination:
 
 Each item has class 'post-item' if you want to do custom spacing.
 #}
-{% macro postlist_macro(posts, headerTag) %}
+{% macro postslist_macro(page, posts, headerTag) %}
+  {# {% dumpArticle ['in postslists macro, bout to do for loop', {"page":page}, "posts follows"], posts %}
+  #}
   {% for post in posts %}
   <div itemscope itemtype = "http://schema.org/BlogPosting" class="post-item">
     <meta itemprop="headline" content="{{post.data.title | stripTitle}}" />
@@ -39,7 +41,6 @@ Each item has class 'post-item' if you want to do custom spacing.
     {%- endfor %}
     {{ rendered_keywords | join(" ") | safe }}
     </div>
-
     <span style="word-break: break-word;">{% excerpt post %}</span>
   </div>
   {% endfor %}

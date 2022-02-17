@@ -1,0 +1,17 @@
+---
+eleventyExcludeFromCollections: true
+redirect_to_url: "/posts/"
+---
+<!DOCTYPE html>
+  <html lang="en-US">
+  <meta charset="utf-8">
+  <title>Redirecting&hellip;</title>
+  <link rel="canonical" href="{{ redirect_to_url | url }}">
+  <script>location="{{ redirect_to_url | url }}"</script>
+  <meta http-equiv="refresh" content="0; url={{ redirect_to_url | url }}">
+  <meta name="robots" content="noindex">
+  <h1>Redirecting&hellip;</h1>
+  <a href="{{ redirect_to_url | url }}">Click here if you are not redirected.</a>
+</html>
+{#- vim: syntax=html
+#}

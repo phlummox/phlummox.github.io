@@ -14,9 +14,9 @@ customStyle: |
 
 # Posts
 
-{%- from 'postslist_macro.njk' import postlist_macro -%}
+{%- from 'postslist_macro.njk' import postslist_macro -%}
 
-{{ postlist_macro(posts, 'h2') }}
+{{ postslist_macro(page, posts, 'h2') }}
 
 {% include '_nav_arrows.njk' %}
 

@@ -15,7 +15,7 @@ eleventyExcludeFromCollections: true
     <name>{{ siteinfo.author }}</name>
     <uri>{{ siteinfo.site_url }}</uri>
   </author>
-  {%- for post in collections.post | reverse %}
+  {%- for post in collections.post | sortByDate | reverse %}
   {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(siteinfo.site_url) }}{% endset %}
   <entry>
     <title>{{ post.data.title | stripTitle}}</title>

@@ -19,16 +19,57 @@ const stringstrip = require("string-strip-html");
 
 const excerpt_length = 200;
 
-function extractExcerpt(article) {
-  if (!article.hasOwnProperty("templateContent")) {
-    console.warn(
-      'Failed to extract excerpt: Document has no property "templateContent".'
-    );
-    return null;
+const util = require('util');
+
+var dumpId = 0;
+function dumpArticle(msg, article) {
+  let dumpname = "";
+  if (article.inputPath != null) {
+    dumpname = article.inputPath.replaceAll("/", "-");
   }
+  dumpname = dumpId.toString().padStart(4, "0") + dumpname + ".json";
+  let dataToDump = "" + JSON.stringify(msg) + '\n' + util.inspect(article) + "\n";
+  fs.writeFileSync( "/out/" + dumpname, dataToDump );
+  dumpId += 1;
+  return "";
+}
+
+function sortByDate(arr) {
+  function compare( a, b ) {
+    if ( a.date < b.date ){
+      return -1;
+    }
+    if ( a.date > b.date ){
+      return 1;
+    }
+    return 0;
+  }
+  let res = arr.slice();
+  res.sort(compare);
+  return res;
+}
+
+function extractExcerpt(article) {
+  //console.log("BEGIN EXTRACT");
+  //console.log("article:" + article );
 
   let excerpt = null;
-  const content = article._templateContent;
+  let content = article._templateContent;
+
+  if (content == null) {
+    const msg = "bad article in .eleventy.js/extractExcerpt: article has no _templateContent. Probably dumped to " + dumpId;
+    console.warn(msg);
+    //if (true) { throw Error(msg); }
+    //return "```ERROR: " + msg + "```";
+    content = article.templateContent;
+  }
+
+  if (content == null) {
+    const msg = "STILL bad article in .eleventy.js/extractExcerpt: article has no templateContent. Probably dumped to " + dumpId;
+    console.warn(msg);
+    if (true) { throw Error(msg); }
+    return "```ERROR: " + msg + "```";
+  }
 
   // `script`, `style` and `xml` tags
   // are stripped _with_ their content
@@ -77,6 +118,13 @@ module.exports = function(eleventyConfig) {
   });
 
   ////
+  // sort by date
+
+  eleventyConfig.addFilter('sortByDate', arr => {
+    return sortByDate(arr);
+  });
+
+  ////
   // nice legal titles
   eleventyConfig.addFilter("stripTitle", (title) => stripTitle(title));
 
@@ -92,6 +140,8 @@ module.exports = function(eleventyConfig) {
 
   ////
   // debugging
+
+  eleventyConfig.addShortcode("dumpArticle", (msg, article) => dumpArticle(msg, article));
 
   eleventyConfig.addFilter("stringify", function(value) {
     return JSON.stringify(value);
