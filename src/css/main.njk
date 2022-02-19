@@ -93,10 +93,18 @@ code, kbd, pre, samp {
   background-color: var(--accent);
 }
 
+/* pre on small-width screens */
+@media (max-width: 767px) {
+  pre {
+    overflow: scroll;
+  }
+}
+
 /* Inline code */
-code {
+:not(pre) code {
   padding: 2px 4px;
   font-size: 90%;
+  word-break: break-all !important;
   color: #c7254e;
   background-color: #f9f2f4;
   border-radius: 4px;
@@ -104,13 +112,18 @@ code {
 
 /* Blocks of code */
 pre code {
-    padding: 0;
-    font-size: inherit;
-    color: inherit;
-    white-space: pre-wrap;
-    hyphens: none;
-    background-color: transparent;
-    border-radius: 0;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+  hyphens: none;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+/* force something to be pre-wrap but breakable */
+.wrappable {
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
 }
 
 kbd {
@@ -218,12 +231,6 @@ a:hover {
   }
 } /*end media */
 
-/*coloured borders at top and bottom of the page*/
-/*
-.navbar.navbar-default {
-    border-top: var(--border-width) solid var(--accent);
-}
-*/
 
 .single-content {
     hyphens: auto;

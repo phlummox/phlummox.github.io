@@ -59,15 +59,26 @@ a:focus {
 }
 
 .navbar-fixed-top {
+  top: 0;
   position: fixed;
-  right: 0;
-  left: 0;
+  border-left-width: 0;
+  border-right-width: 0;
   z-index: 1030;
 }
 
-.navbar-fixed-top {
-  top: 0;
-  border-width: 0 0 1px;
+/* small */
+@media (max-width: 767px) {
+  /* ensure navbar always vis */
+  .navbar-fixed-top {
+    width: 100vw;
+  }
+}
+/* large */
+@media (min-width: 768px) {
+  .navbar-fixed-top {
+    right: 0;
+    left: 0;
+  }
 }
 
 .navbar-brand {
@@ -210,7 +221,6 @@ nav .navbar-body {
     border-top-width: 1px;
     border-top-style: solid;
     max-height: 340px;
-
     align-items: center;
 }
 
@@ -273,11 +283,22 @@ nav ul {
 
 /* small */
 @media (max-width: 767px) {
+  nav {
+    border-top-width: 0;
+  }
+
   nav .navbar-body {
     flex-direction: column;
   }
   .nav-links-lefty {
     flex-direction: column;
+  }
+}
+
+/* big */
+@media (min-width: 768px) {
+  nav .navbar-body {
+    border-top-style: none;
   }
 }
 

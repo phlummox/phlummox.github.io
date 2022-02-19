@@ -16,7 +16,7 @@
       for(let i = 0; i < pages.length; i += 1) {
         let page = pages[i]
         // e.g. redirection from
-        //    "/post/accessing-docker-container-fs/index.html" 
+        //    "/post/accessing-docker-container-fs/index.html"
         // -> "/posts/2018/accessing-docker-container-fs/index.html"
         let last_component = page.url.slice(0, -1).split('/').slice(-1)[0]
         let old_path = '/post/' + last_component + '/index.html'

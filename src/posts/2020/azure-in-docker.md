@@ -232,7 +232,7 @@ up, then maybe someday the others will too.
   anonymous volumes are not actually anonymous (though they are
   volumes). They just are given a [randomly-generated][random-name]{target="_blank"} name
   when created -- something euphonious and pleasant to read like
-  <code style="word-break: break-word">71bc263a17ab4233d9d966c42bdb060c026ce6531c00fa5a7b7329834fe01914000000000000000000</code> for
+  <code>71bc263a17ab4233d9d966c42bdb060c026ce6531c00fa5a7b7329834fe01914000000000000000000</code> for
   instance.
 
 [terrible]: <https://martinfowler.com/bliki/TwoHardThings.html>
