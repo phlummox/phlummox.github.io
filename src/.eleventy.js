@@ -1,20 +1,24 @@
 // .eleventy.js in the project root
 
-const yaml = require("js-yaml");
-//const pluginYamldata = require("eleventy-plugin-yamldata");
-
-const fs = require('fs');
-
 const isProduction = process.env.ELEVENTY_ENV === 'production';
 
+const yaml        = require("js-yaml");
+//const pluginYamldata = require("eleventy-plugin-yamldata");
+
+const fs          = require('fs');
+
 // nice formatting of dates and times
-const moment = require('moment');
+const moment      = require('moment');
 moment.locale('en-GB');
+
+// css preprocessing
+const CleanCSS    = require("clean-css"); //minifier
+const CSSLint     = require('csslint').CSSLint;
+
 
 // nice shortcode for excerpts/teasers
 // see https://www.jonathanyeong.com/garden/excerpts-with-eleventy/
-const striptags = require("striptags");
-//const excerpt = require('eleventy-plugin-excerpt');
+const striptags   = require("striptags");
 const stringstrip = require("string-strip-html");
 
 const excerpt_length = 200;
@@ -59,8 +63,6 @@ function extractExcerpt(article) {
   if (content == null) {
     const msg = "bad article in .eleventy.js/extractExcerpt: article has no _templateContent. Probably dumped to " + dumpId;
     console.warn(msg);
-    //if (true) { throw Error(msg); }
-    //return "```ERROR: " + msg + "```";
     content = article.templateContent;
   }
 
@@ -71,8 +73,7 @@ function extractExcerpt(article) {
     return "```ERROR: " + msg + "```";
   }
 
-  // `script`, `style` and `xml` tags
-  // are stripped _with_ their content
+  // some tags are stripped _with_ their content:
   excerpt = stringstrip.stripHtml(content, {
       stripTogetherWithTheirContents: [
         "script", // default
@@ -151,6 +152,29 @@ module.exports = function(eleventyConfig) {
     console.log("typeof value is: ", typeof(value));
     console.log("stringified value is: ", JSON.stringify(value));
     console.log("raw value is: ", value);
+  });
+
+  ////
+  // css filters
+
+  // actually this is just verifyinf valid syntax, rather than
+  // linting. Linting warnings will be very repetitive if we re-lint the
+  // same code over and over. TODO: find a way to fix this.
+  eleventyConfig.addFilter("csslint", function(code, page, css_file) {
+    let res = CSSLint.verify(code);
+    let css_errors = res.messages.filter(msg => msg.type === "error")
+    if (css_errors.length != 0) {
+      let errMessage = "csslint failed to lint css from file '" + css_file + "', in page: " + util.inspect(page) +
+                        ", errors were: " + util.inspect(css_errors);
+      throw Error(errMessage);
+    }
+    //let warnMessage = "csslint warnings from file '" + css_file + "', in page: " + util.inspect(page)
+    //console.warn(warnMessage, res.messages)
+    return code;
+  });
+
+  eleventyConfig.addFilter("cssmin", function(code) {
+    return new CleanCSS({}).minify(code).styles;
   });
 
   ////
@@ -235,6 +259,7 @@ module.exports = function(eleventyConfig) {
   copy_config = {};
 
   // This will copy these folders to the output without modifying them at all
+  // (NB: these won't get mininified, linted, etc. TODO: minify and lint them)
   var asset_dirs = ['css', 'fonts', 'images', 'js'];
   for (const dir of asset_dirs) {
     const src_dir = "/assets/" + dir;
@@ -262,7 +287,7 @@ module.exports = function(eleventyConfig) {
   // build will fail if the HTML produced can't be parsed.
 
   eleventyConfig.addTransform("headernav", function(content, outputPath) {
-    console.log("\nheadernav. outputPath:", outputPath);
+    console.log("\nvalidating with 'tidy'. outputPath:", outputPath);
 
     // validate HTML output using `tidy`.
     if( this.outputPath && this.outputPath.endsWith(".html") ) {
@@ -323,7 +348,7 @@ module.exports = function(eleventyConfig) {
       input: "/src",
       includes: "_includes",
       layouts: "_layouts",
-      //data: "_data",
+      data: "_data",
       output: "/out/_site/"
     },
     // use nunjucks for everything:

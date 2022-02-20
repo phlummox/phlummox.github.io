@@ -1,0 +1,116 @@
+nav {
+  padding: 0 15px;
+  border-top: var(--border-width) solid var(--accent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 5px rgba(0, 0, 0, 0.075);
+  background-color: #f8f8f8;
+  min-height: 50px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+nav * {
+  list-style: none;
+}
+
+nav li {
+    position: relative;
+    /* ^^^ needed ?? */
+    display: block;
+}
+
+nav .navbar-brand
+{
+    color: #777777 !important;
+}
+
+nav li > a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+nav .navbar-body {
+    border-color: #e7e7e7;
+    border-top-width: 1px;
+    border-top-style: solid;
+    max-height: 340px;
+    align-items: center;
+}
+
+nav .navnew-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav li > a {
+  color: #777777;
+}
+nav li > a:link, nav li > a:visited {
+  color: #777777;
+}
+
+nav li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+}
+
+nav .nav-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.nav-menu > * {
+  margin: 0;
+  width: 100%;
+}
+
+nav .toggle {
+  order: 1;
+}
+
+{# max width is main + 400 #}
+nav .navbar-body {
+  display: flex;
+  max-width: 1150px;
+}
+
+nav ul {
+  display: flex;
+}
+
+
+/* big */
+@media (min-width: 768px) {
+  nav .navbar-body {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .nav-links-lefty {
+    flex-direction: row;
+  }
+}
+
+/* small */
+@media (max-width: 767px) {
+  nav {
+    border-top-width: 0;
+  }
+
+  nav .navbar-body {
+    flex-direction: column;
+  }
+  .nav-links-lefty {
+    flex-direction: column;
+  }
+}
+
+/* big */
+@media (min-width: 768px) {
+  nav .navbar-body {
+    border-top-style: none;
+  }
+}
+

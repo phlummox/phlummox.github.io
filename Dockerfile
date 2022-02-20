@@ -4,6 +4,8 @@ FROM phlummox/eleventy:1.0.0
 RUN \
   cd /opt/site && \
   npm install --save-dev \
+    clean-css                     \
+    csslint                       \
     eleventy-plugin-excerpt       \
     @11ty/eleventy-plugin-rss     \
     markdown-it-fancy-lists       \
