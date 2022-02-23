@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>phlummox&#39;s blog</title>
+  <subtitle>random posts and musings</subtitle>
+  <rights>Copyright (c) 2022 phlummox</rights>
+  <link rel="self"  href="https://phlummox.dev/feed.xml" />
+  <link href="https://phlummox.dev/"/>
+  <updated>2022-02-10T00:00:00Z</updated>
+  <id>https://phlummox.dev/</id>
+  <author>
+    <name>phlummox</name>
+    <uri>https://phlummox.dev/</uri>
+  </author>
+  
+  <entry>
+    <title>Backing Things Up</title>
+    <author>
+      <name>phlummox</name>
+      <uri>https://phlummox.dev/</uri>
+    </author>
+    <link href="https://phlummox.dev/posts/2022/backing-things-up/"/>
+    <published>2022-02-10T00:00:00Z</published>
+    <updated>2022-02-10T00:00:00Z</updated>
+    <id>https://phlummox.dev/posts/2022/backing-things-up/</id>
+    <content type="html">&lt;p&gt;&lt;a href=&quot;https://www.reddit.com/user/bigheadsmith&quot;&gt;/u/bigheadsmith&lt;/a&gt; just &lt;a href=&quot;https://www.reddit.com/r/homelab/comments/sp0di5/local_and_remote_backups/&quot;&gt;asked on Reddit&lt;/a&gt;
+about good solutions for local and remote backups
+for home PCs – so I offered an outline of my current backup regime.&lt;/p&gt;
+&lt;!-- excerpt --&gt;
+&lt;p&gt;Only a couple
+of responses so far, but suggestions seem to converge around &lt;a href=&quot;https://rclone.org/&quot;&gt;&lt;code&gt;rclone&lt;/code&gt;&lt;/a&gt; and
+&lt;a href=&quot;https://restic.net/&quot;&gt;&lt;code&gt;restic&lt;/code&gt;&lt;/a&gt; being good solutions on Linux. Restic also received a lot
+of enthusiastic support on a recent-ish &lt;a href=&quot;https://news.ycombinator.com/item?id=29209455#29210323&quot;&gt;Hacker News post&lt;/a&gt;, with some
+users saying they’d switched to restic from borg.&lt;/p&gt;
+&lt;p&gt;If you’re on Ubuntu, a downside of &lt;code&gt;restic&lt;/code&gt; is that the versions of it in the
+Ubuntu LTSs lag terribly behind upstream. My solution is to cobble together
+quick-and-dirty &lt;code&gt;.deb&lt;/code&gt; files that include recent fixes – that way, I can still easily
+track what’s been installed where with &lt;code&gt;dpkg&lt;/code&gt; and &lt;code&gt;apt&lt;/code&gt;.
+I do also now have the onus of keeping up to date with upstream myself, but
+luckily, &lt;code&gt;restic&lt;/code&gt; doesn’t seem to have new versions released &lt;em&gt;all&lt;/em&gt; that frequently.
+Thus, I’ve got a quick-and-dirty &lt;code&gt;.deb&lt;/code&gt; version of &lt;a href=&quot;https://github.com/phlummox-dev/restic-deb&quot;&gt;&lt;code&gt;restic&lt;/code&gt;&lt;/a&gt;
+on GitHub, and a friendly fork of &lt;a href=&quot;https://github.com/phlummox-patches/backupninja&quot;&gt;&lt;code&gt;backupninja&lt;/code&gt;&lt;/a&gt; with recent
+bug fixes applied.&lt;/p&gt;
+&lt;br&gt; Posted by phlummox</content>
+  </entry>
+  
+  <entry>
+    <title>Android command-line tools cheat sheet</title>
+    <author>
+      <name>phlummox</name>
+      <uri>https://phlummox.dev/</uri>
+    </author>
+    <link href="https://phlummox.dev/posts/2022/android-cl-cheat-sheet/"/>
+    <published>2022-01-12T00:00:00Z</published>
+    <updated>2022-01-12T00:00:00Z</updated>
+    <id>https://phlummox.dev/posts/2022/android-cl-cheat-sheet/</id>
+    <content type="html">&lt;p&gt;A reminder to myself. I do work on Android apps rarely enough that
+I can never remember what the tools and commands are for different
+tasks – so I started putting together a “cheat sheet” for my own use
+for &lt;a href=&quot;https://gist.github.com/phlummox/24b488fa8656cf925014639bab9977e5&quot;&gt;Android dev–related command-line tools&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Reddit post &lt;a href=&quot;https://www.reddit.com/r/androiddev/comments/s1eoit/good_cheat_sheets_for_commandline_tools/&quot;&gt;here&lt;/a&gt;, where someone pointed out &lt;a href=&quot;https://gist.github.com/Pulimet/5013acf2cd5b28e55036c82c91bd56d8&quot;&gt;this&lt;/a&gt;
+massively useful reference for &lt;code&gt;adb&lt;/code&gt; commands.&lt;/p&gt;
+&lt;br&gt; Posted by phlummox</content>
+  </entry>
+  
+  <entry>
+    <title>Running Azure&#39;s az command-line tool from a docker container; or, the &quot;credentials in a container&quot; trick</title>
+    <author>
+      <name>phlummox</name>
+      <uri>https://phlummox.dev/</uri>
+    </author>
+    <link href="https://phlummox.dev/posts/2020/azure-in-docker/"/>
+    <published>2020-08-17T00:00:00Z</published>
+    <updated>2020-08-17T00:00:00Z</updated>
+    <id>https://phlummox.dev/posts/2020/azure-in-docker/</id>
+    <content type="html">&lt;p&gt;Every cloud platform provider has their own CLI tool they want you to
+install, all with different dependencies and install methods.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-cli&quot; target=&quot;_blank&quot;&gt;Some&lt;/a&gt; &lt;a href=&quot;https://github.com/digitalocean/doctl/blob/master/README.md#snap-supported-os&quot; target=&quot;_blank&quot;&gt;want&lt;/a&gt;
+you to &lt;a href=&quot;https://lwn.net/Articles/825005/&quot; target=&quot;_blank&quot;&gt;install&lt;/a&gt;
+their tools &lt;a href=&quot;https://news.ycombinator.com/item?id=17055401&quot; target=&quot;_blank&quot;&gt;using&lt;/a&gt; &lt;a href=&quot;https://www.helpnetsecurity.com/2019/02/13/cve-2019-7304/&quot; target=&quot;_blank&quot;&gt;Snap&lt;/a&gt;;
+&lt;a href=&quot;https://aws.amazon.com/cli/&quot; target=&quot;_blank&quot;&gt;some&lt;/a&gt; want you
+to run install scripts as &lt;a href=&quot;https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html#cliv2-linux-install&quot; target=&quot;_blank&quot;&gt;&lt;samp&gt;root&lt;/samp&gt;&lt;/a&gt; that
+add files not managed by your OS’s package management
+system;&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://phlummox.dev/posts/2020/azure-in-docker/#fn1&quot; id=&quot;fnref1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/8a8f17f5fd334fb583438edbd831d506.html#loio8a8f17f5fd334fb583438edbd831d506&quot; target=&quot;_blank&quot;&gt;some&lt;/a&gt; want you to click through
+&lt;a href=&quot;https://phlummox.dev/images/azure-in-docker--germany.png&quot; target=&quot;_blank&quot;&gt;a license&lt;/a&gt; where
+you agree to be bound by the laws of Germany.
+Occasionally, you might find one who actually packages their tool
+for &lt;a href=&quot;https://cloud.google.com/sdk/install#installation_options&quot; target=&quot;_blank&quot;&gt;at least a few&lt;/a&gt; different OS distributions, or even
+provides a &lt;a href=&quot;https://www.alibabacloud.com/help/doc-detail/121541.htm&quot; target=&quot;_blank&quot;&gt;statically-linked binary&lt;/a&gt; plus the
+&lt;a href=&quot;https://github.com/aliyun/aliyun-cli&quot; target=&quot;_blank&quot;&gt;source code&lt;/a&gt; it was built from.
+Really though, the best CLI is one you &lt;a href=&quot;https://www.infoq.com/articles/azure-cloud-shell/&quot; target=&quot;_blank&quot;&gt;don’t have to
+install at all&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I’m surprised (and annoyed, of course)
+that more cloud providers don’t provide web-based shell
+access to their tools. But when they don’t, the next
+best option might be to install the tool in a Docker container.
+(In any case, working in a &lt;a href=&quot;https://www.npmjs.com/package/webssh2&quot; target=&quot;_blank&quot;&gt;webssh&lt;/a&gt; session gets a bit
+wearisome after a while, somewhere around the tenth time you
+accidentally hit &lt;code&gt;ctrl-r&lt;/code&gt; and refresh the page instead of searching
+your command history. Installing a tool on your own machine
+does have &lt;em&gt;some&lt;/em&gt; benefits.)&lt;/p&gt;
+&lt;p&gt;Rather than having your development environment cluttered with dozens or
+even hundreds of dependencies you neither want nor need, why not
+confine each provider’s tools to a single Docker container? Then you
+will have
+to clutter your development environment
+with potentially only &lt;a href=&quot;https://www.docker.com/&quot; target=&quot;_blank&quot;&gt;&lt;em&gt;one&lt;/em&gt;&lt;/a&gt; &lt;a href=&quot;https://coreos.com/rkt/docs/latest/rkt-vs-other-projects.html#process-model&quot; target=&quot;_blank&quot;&gt;baroque&lt;/a&gt;,
+&lt;a href=&quot;https://media.rubegoldberg.com/site/wp-content/uploads/2019/04/hachathon-1200x674.jpg&quot; target=&quot;_blank&quot;&gt;Rube&lt;/a&gt;
+&lt;a href=&quot;https://news.ycombinator.com/item?id=9963242&quot; target=&quot;_blank&quot;&gt;Goldberg&lt;/a&gt;&lt;a href=&quot;https://levelup.gitconnected.com/how-docker-authentication-works-by-documentation-mitm-and-implementation-e62cd7a31178#9bf4&quot; target=&quot;_blank&quot;&gt;–esque&lt;/a&gt;,
+&lt;a href=&quot;https://www.smithsonianmag.com/science-nature/true-story-kudzu-vine-ate-south-180956325/&quot; target=&quot;_blank&quot;&gt;Kudzu-&lt;/a&gt;pervasive
+framework.&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://phlummox.dev/posts/2020/azure-in-docker/#fn2&quot; id=&quot;fnref2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;!--
+sap archived at &lt;http://archive.is/8wq7h&gt;
+--&gt;
+&lt;p&gt;Taking Azure’s &lt;code&gt;az&lt;/code&gt; tool as an example, you can do it like so:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Pull the Docker image (based on Alpine Linux) for the &lt;code&gt;az&lt;/code&gt; CLI
+tool:&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://phlummox.dev/posts/2020/azure-in-docker/#fn3&quot; id=&quot;fnref3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://phlummox.dev/posts/2020/azure-in-docker/#fn4&quot; id=&quot;fnref4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker pull mcr.microsoft.com/azure-cli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a docker volume which will hold the contents of the &lt;code&gt;/root&lt;/code&gt;
+directory, which is where our credentials are stored:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker -D run -v /root --name azconfig mcr.microsoft.com/azure-cli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We now have a stopped Docker container called &lt;code&gt;azconfig&lt;/code&gt;, containing an
+anonymous volume&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://phlummox.dev/posts/2020/azure-in-docker/#fn5&quot; id=&quot;fnref5&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; which contains the contents of the &lt;code&gt;/root&lt;/code&gt;
+directory. We can use the volume by supplying &lt;code&gt;--volumes-from azconfig&lt;/code&gt;
+as an argument to the &lt;code&gt;docker run&lt;/code&gt; command.&lt;/p&gt;
+&lt;p&gt;(Note that we don’t supply &lt;code&gt;--rm&lt;/code&gt; as an argument this first time round,
+since we want to actually &lt;em&gt;keep&lt;/em&gt; the container and its attached volume.)&lt;/p&gt;
+&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Spin up a new container which mounts the volume from our &lt;code&gt;azconfig&lt;/code&gt; one:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;docker run --rm -it --volumes-from azconfig mcr.microsoft.com/azure-cli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This time we &lt;em&gt;do&lt;/em&gt; use the &lt;code&gt;--rm&lt;/code&gt; argument: we don’t care if this container
+disappears, the credentials will be stored in the volume.&lt;/p&gt;
+&lt;ol start=&quot;4&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Inside the container, we can run&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-sh&quot;&gt;az login
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to log on. The tool displays a message like&lt;/p&gt;
+&lt;div class=&quot;web-login &quot; style=&quot;color: #AA5500 !important; font-family: monospace;&quot;&gt;
+&lt;p&gt;To sign in, use a web browser to open the page &lt;a href=&quot;https://microsoft.com/devicelogin&quot; style=&quot;color: #AA5500 !important; font-family: monospace;&quot;&gt;https://microsoft.com/devicelogin&lt;/a&gt; and enter the code XXXXXXXXX to authenticate.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;where the “&lt;code&gt;XXXXXXXXX&lt;/code&gt;” is some 9-character code Microsoft uses to
+identify the device you’re logging in from. Follow the instructions,
+and voilà – we’re in.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now we can run whatever commands we like inside the running container –
+try typing &lt;code&gt;az account list&lt;/code&gt;, just to check that the tool is working:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-text&quot;&gt;$ az account list
+[
+  {
+    &amp;quot;cloudName&amp;quot;: &amp;quot;AzureCloud&amp;quot;,
+    &amp;quot;homeTenantId&amp;quot;: &amp;quot;&amp;lt;REDACTED&amp;gt;&amp;quot;,
+    &amp;quot;id&amp;quot;: &amp;quot;&amp;lt;REDACTED&amp;gt;&amp;quot;,
+    &amp;quot;isDefault&amp;quot;: true,
+    &amp;quot;managedByTenants&amp;quot;: [],
+    &amp;quot;name&amp;quot;: &amp;quot;Free Trial&amp;quot;,
+    &amp;quot;state&amp;quot;: &amp;quot;Enabled&amp;quot;,
+    &amp;quot;tenantId&amp;quot;: &amp;quot;&amp;lt;REDACTED&amp;gt;&amp;quot;,
+    &amp;quot;user&amp;quot;: {
+      &amp;quot;name&amp;quot;: &amp;quot;phlummox@phlummox.dev&amp;quot;,
+      &amp;quot;type&amp;quot;: &amp;quot;user&amp;quot;
+    }
+  }
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And regardless of what we do with the new containers – keep them running,
+stop them, throw them away – we can just run up a new one to access
+our existing credentials and avoid having to log in again.&lt;/p&gt;
+&lt;p&gt;There. Don’t you feel better about life already? If only I’d done
+something like this earlier, I could’ve avoided writing
+&lt;a href=&quot;https://phlummox.dev/post/installing-travis-cli/&quot;&gt;this&lt;/a&gt; post.&lt;/p&gt;
+&lt;p&gt;The same sort of method should work perfectly well for other
+command-line tools like
+&lt;a href=&quot;https://aws.amazon.com/cli/&quot; target=&quot;_blank&quot;&gt;Amazon’s&lt;/a&gt;, &lt;a href=&quot;https://devcenter.heroku.com/articles/heroku-cli&quot; target=&quot;_blank&quot;&gt;Heroku’s&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/travis-ci/travis-ci/issues/2055&quot; target=&quot;_blank&quot;&gt;Travis CI’s&lt;/a&gt;, and so on.
+Google &lt;a href=&quot;https://cloud.google.com/sdk&quot; target=&quot;_blank&quot;&gt;Cloud SDK&lt;/a&gt; and &lt;a href=&quot;https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-docker.html#cliv2-docker-share-files&quot; target=&quot;_blank&quot;&gt;Amazon’s&lt;/a&gt;
+command-line tools are the only ones I’ve noticed where the provider
+actually &lt;a href=&quot;https://hub.docker.com/r/google/cloud-sdk/&quot; target=&quot;_blank&quot;&gt;tells users&lt;/a&gt;
+&lt;a href=&quot;https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-docker.html#cliv2-docker-share-files&quot; target=&quot;_blank&quot;&gt;about the method&lt;/a&gt;
+described here as an alternative to installing a godawful bunch of packages just to manage something in the cloud.
+But I like to think that if enough of us join together, in a spirit
+of good-will and positivity, and yell at cloud providers to fix their shit
+up, then maybe someday the others will too.&lt;/p&gt;
+&lt;!--
+https://github.com/travis-ci/travis.rb#readme
+--&gt;
+&lt;hr class=&quot;footnotes-sep&quot; /&gt;
+&lt;section class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn1&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Though to give Amazon credit, they do at least &lt;em&gt;tell&lt;/em&gt; you
+where their install script will be creating files. So it would be
+pretty easy to package the resulting files up into whatever package
+is native to your distribution (e.g. &lt;code&gt;.deb&lt;/code&gt; or &lt;code&gt;.rpm&lt;/code&gt; files). &lt;a href=&quot;https://phlummox.dev/posts/2020/azure-in-docker/#fnref1&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn2&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Well, two, if your OS also
+uses &lt;a href=&quot;https://lwn.net/Articles/676831/&quot; target=&quot;_blank&quot;&gt;systemd&lt;/a&gt;. &lt;a href=&quot;https://phlummox.dev/posts/2020/azure-in-docker/#fnref2&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn3&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Microsoft hosts the &lt;code&gt;az&lt;/code&gt; CLI docker images on its own registry,
+the &lt;a href=&quot;https://github.com/microsoft/containerregistry&quot; target=&quot;_blank&quot;&gt;Microsoft Container Registry&lt;/a&gt;,
+located at &lt;a href=&quot;https://mcr.microsoft.com/&quot; target=&quot;_blank&quot;&gt;https://mcr.microsoft.com&lt;/a&gt;, so when pulling from it  we
+have to use a &lt;a href=&quot;https://windsock.io/referencing-docker-images/&quot; target=&quot;_blank&quot;&gt;qualified reference&lt;/a&gt;
+to the image we want. If we wanted to explore the tags available for
+the &lt;code&gt;azure-cli&lt;/code&gt; image, we could run &lt;br /&gt;
+  &lt;br /&gt;
+&lt;code&gt;curl -L https://mcr.microsoft.com/v2/azure-cli/tags/list&lt;/code&gt;
+ &lt;br /&gt;
+ &lt;br /&gt;
+&lt;a href=&quot;https://jeeweetje.net/2019/07/10/exploring-containers-in-the-microsoft-container-registry-with-visual-studio-code/&quot; target=&quot;_blank&quot;&gt;This&lt;/a&gt; blog post suggests it also should be possible to
+explore the various repositories in the &lt;a href=&quot;https://en.wikipedia.org/wiki/RAS_syndrome&quot; target=&quot;_blank&quot;&gt;MCR registry&lt;/a&gt;
+from within the very
+nifty &lt;a href=&quot;https://code.visualstudio.com/&quot; target=&quot;_blank&quot;&gt;Visual Studio Code&lt;/a&gt; IDE, but I
+couldn’t get that to work, and Microsoft
+&lt;a href=&quot;https://github.com/microsoft/containerregistry#faq&quot; target=&quot;_blank&quot;&gt;doesn’t seem&lt;/a&gt; to want you to. &lt;a href=&quot;https://phlummox.dev/posts/2020/azure-in-docker/#fnref3&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn4&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Interestingly, if you look at the headers of the response
+from &lt;code&gt;mcr.microsoft.com&lt;/code&gt;, using &lt;code&gt;curl -v&lt;/code&gt;, the &lt;code&gt;Host&lt;/code&gt; name is
+&lt;code&gt;openresty&lt;/code&gt;, suggesting Microsoft’s registry is powered by the
+open source
+&lt;a href=&quot;https://openresty.org/en/&quot; target=&quot;_blank&quot;&gt;OpenResty&lt;/a&gt; variant of
+Nginx, which adds to Nginx the ability to make use of libraries
+written in LuaJIT.
+Or uses it as a reverse proxy, anyway.
+How things &lt;a href=&quot;https://www.zdnet.com/article/ballmer-i-may-have-called-linux-a-cancer-but-now-i-love-it/&quot; target=&quot;_blank&quot;&gt;have changed&lt;/a&gt; since the days of
+&lt;a href=&quot;https://www.theregister.com/2001/06/02/ballmer_linux_is_a_cancer/&quot; target=&quot;_blank&quot;&gt;“Linux is a cancer”&lt;/a&gt; (or,
+&lt;a href=&quot;https://www.theregister.com/2000/07/31/ms_ballmer_linux_is_communism/&quot; target=&quot;_blank&quot;&gt;“communism”&lt;/a&gt;) and
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Embrace,_extend,_and_extinguish&quot; target=&quot;_blank&quot;&gt;“Embrace, extend, extinguish”&lt;/a&gt;! Hopefully. &lt;a href=&quot;https://phlummox.dev/posts/2020/azure-in-docker/#fnref4&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn5&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;In the tradition of IT people giving things &lt;a href=&quot;https://martinfowler.com/bliki/TwoHardThings.html&quot; target=&quot;_blank&quot;&gt;terrible&lt;/a&gt; &lt;a href=&quot;https://alexene.dev/2020/08/17/webassembly-without-the-browser-part-1.html#what-is-webassembly&quot; target=&quot;_blank&quot;&gt;names&lt;/a&gt;,
+anonymous volumes are not actually anonymous (though they are
+volumes). They just are given a &lt;a href=&quot;https://docs.docker.com/storage/#more-details-about-mount-types&quot; target=&quot;_blank&quot;&gt;randomly-generated&lt;/a&gt; name
+when created – something euphonious and pleasant to read like
+&lt;code&gt;71bc263a17ab4233d9d966c42bdb060c026ce6531c00fa5a7b7329834fe01914000000000000000000&lt;/code&gt; for
+instance. &lt;a href=&quot;https://phlummox.dev/posts/2020/azure-in-docker/#fnref5&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+&lt;br&gt; Posted by phlummox</content>
+  </entry>
+  
+  <entry>
+    <title>Installing Travis cli</title>
+    <author>
+      <name>phlummox</name>
+      <uri>https://phlummox.dev/</uri>
+    </author>
+    <link href="https://phlummox.dev/posts/2020/installing-travis-cli/"/>
+    <published>2020-07-14T00:00:00Z</published>
+    <updated>2020-07-14T00:00:00Z</updated>
+    <id>https://phlummox.dev/posts/2020/installing-travis-cli/</id>
+    <content type="html">&lt;p&gt;A reminder to myself on how to install the Travis CLI command-line tool
+on Ubuntu
+(which is the only time I ever make use of Ruby, and which I only ever
+do when installing a fresh OS).&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Install Ruby.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ sudo apt install ruby ruby-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install the Travis gem.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;gem install --user-install travis
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The output of this will include a warning that
+“You don’t have &lt;code&gt;/home/​phlummox/​.gem/​ruby/​2.5.0/​bin&lt;/code&gt; [or something
+similar] in your PATH, gem executables will not run”.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;So ensure it’s added next time you log in:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ echo &#39;PATH=$HOME/.gem/ruby/2.5.0/bin:$PATH&#39; &amp;gt;&amp;gt; ~/.profile
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(And &lt;code&gt;source ~/.profile&lt;/code&gt;, to update your path right now.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run &lt;code&gt;travis login&lt;/code&gt;, &lt;strong&gt;OR&lt;/strong&gt; (more likely) &lt;code&gt;travis login --pro&lt;/code&gt;,
+to authenticate with the Travis CLI servers using GitHub.
+The former logs you in to &lt;a href=&quot;https://travis-ci.org/&quot;&gt;travis-ci.org&lt;/a&gt;,
+the latter to &lt;a href=&quot;https://www.travis-ci.com/&quot;&gt;travis-ci.com&lt;/a&gt;; the &lt;code&gt;.org&lt;/code&gt;
+server will eventually be deprecated, IIRC.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Do whatever Travis-related task you needed to do. Probably, something like&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ travis encrypt --pro DOCKER_USERNAME=my-user-name --add env.global
+$ travis encrypt --pro DOCKER_PASSWORD=my-password  --add env.global
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;br&gt; Posted by phlummox</content>
+  </entry>
+  
+  <entry>
+    <title>Ubuntu libsqliteodbc bug</title>
+    <author>
+      <name>phlummox</name>
+      <uri>https://phlummox.dev/</uri>
+    </author>
+    <link href="https://phlummox.dev/posts/2020/ubuntu-libsqliteodbc-bug/"/>
+    <published>2020-06-04T00:00:00Z</published>
+    <updated>2020-06-04T00:00:00Z</updated>
+    <id>https://phlummox.dev/posts/2020/ubuntu-libsqliteodbc-bug/</id>
+    <content type="html">&lt;p&gt;Putting this here so I can find it again…&lt;/p&gt;
+&lt;p&gt;On Ubuntu 16.04, &lt;code&gt;libsqliteodbc&lt;/code&gt;&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://phlummox.dev/posts/2020/ubuntu-libsqliteodbc-bug/#fn1&quot; id=&quot;fnref1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;  installs dynamic library files
+to the wrong directory.&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://phlummox.dev/posts/2020/ubuntu-libsqliteodbc-bug/#fn2&quot; id=&quot;fnref2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Instead of putting &lt;code&gt;libsqlite3odbc.so&lt;/code&gt; in &lt;code&gt;/usr/lib/x86_64-linux-gnu&lt;/code&gt;,
+it puts it in a subdirectory, &lt;code&gt;odbc&lt;/code&gt;.  And then
+&lt;code&gt;libreoffice-base&lt;/code&gt;&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;https://phlummox.dev/posts/2020/ubuntu-libsqliteodbc-bug/#fn3&quot; id=&quot;fnref3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; looks for it in the normal place and can’t
+find it, leading to runtime errors if you try to connect via ODBC to an
+Sqlite3 database:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-text&quot;&gt;The connection to the data source &amp;quot;MY_DATA_SOURCE&amp;quot; could not be established.
+[unixODBC][Driver Manager]Can&#39;t open lib &#39;libsqlite3odbc.so&#39;: file not found
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;So a fix is to install a symlink in the normal directory, pointing to
+the installed &lt;code&gt;.so&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ sudo ln -s odbc/libsqlite3odbc.so /usr/lib/x86_64-linux-gnu
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr class=&quot;footnotes-sep&quot; /&gt;
+&lt;section class=&quot;footnotes&quot;&gt;
+&lt;ol class=&quot;footnotes-list&quot;&gt;
+&lt;li id=&quot;fn1&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;version &lt;a href=&quot;https://packages.ubuntu.com/xenial/libsqliteodbc&quot;&gt;0.9992-0.1&lt;/a&gt; &lt;a href=&quot;https://phlummox.dev/posts/2020/ubuntu-libsqliteodbc-bug/#fnref1&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn2&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;Or, alternatively, &lt;code&gt;libreoffice-base&lt;/code&gt; is looking in the wrong place. But there seems no good reason to install the library files to a subdirectory. &lt;a href=&quot;https://phlummox.dev/posts/2020/ubuntu-libsqliteodbc-bug/#fnref2&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn3&quot; class=&quot;footnote-item&quot;&gt;&lt;p&gt;version  &lt;a href=&quot;https://launchpad.net/ubuntu/+source/libreoffice/1:5.1.6~rc2-0ubuntu1~xenial10&quot;&gt;1:5.1.6~rc2-0ubuntu1~xenial10&lt;/a&gt; &lt;a href=&quot;https://phlummox.dev/posts/2020/ubuntu-libsqliteodbc-bug/#fnref3&quot; class=&quot;footnote-backref&quot;&gt;↩︎&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+&lt;br&gt; Posted by phlummox</content>
+  </entry>
+  
+  <entry>
+    <title>Accessing the filesystem of a running Docker container</title>
+    <author>
+      <name>phlummox</name>
+      <uri>https://phlummox.dev/</uri>
+    </author>
+    <link href="https://phlummox.dev/posts/2018/accessing-docker-container-fs/"/>
+    <published>2018-07-30T04:34:02Z</published>
+    <updated>2018-07-30T04:34:02Z</updated>
+    <id>https://phlummox.dev/posts/2018/accessing-docker-container-fs/</id>
+    <content type="html">&lt;p&gt;Well that’s neat — there’s a &lt;a href=&quot;https://stackoverflow.com/a/32498954/6818792&quot;&gt;quick-and-dirty
+trick&lt;/a&gt; for accessing the
+filesystem of a running Docker container from your host machine. Not
+especially safe, but much quicker than messing around with ssh servers
+etc. within the container.&lt;/p&gt;
+&lt;p&gt;So, within the &lt;em&gt;&lt;code&gt;proc&lt;/code&gt;&lt;/em&gt;
+filesystem, &lt;code&gt;/proc/&lt;em&gt;some-pid&lt;/em&gt;/root/&lt;/code&gt;
+exposes the root filesystem that process &lt;code&gt;&lt;em&gt;some-pid&lt;/em&gt;&lt;/code&gt; is running
+on. So we can do the following, to get an interactive shell on that
+filesystem:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Find some process that’s running inside the container, that we can uniquely identify. (In the following example, we assume java is running nowhere else but inside the container.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Run the following:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; sudo -s
+&amp;gt; cd /proc/$(pgrep java)/root/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And voilà, we’re in.&lt;/p&gt;
+&lt;p&gt;We can also mount that filesystem somewhere more convenient. There are
+probably better ways, but mine is: given a directory
+&lt;code&gt;/proc/&lt;/code&gt;&lt;em&gt;&lt;code&gt;some-pid&lt;/code&gt;&lt;/em&gt;&lt;code&gt;/root/&lt;/code&gt;, we can execute&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  &amp;gt; sudo df -h /proc/some-pid/root/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to get the path to the device being used for process
+&lt;em&gt;&lt;code&gt;some-pid&lt;/code&gt;&lt;/em&gt;’s filesystem (normally, an image file sitting under
+&lt;code&gt;/var/lib/docker&lt;/code&gt;). For instance:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;gt; sudo df -h /proc/16503/root/
+ Filesystem      Size  Used Avail Use% Mounted on
+ overlay         1.6T  269G  1.4T  17% /var/lib/docker/overlay2/d69311eb816371025cf40a7832689180f7805a685badc14a2e84db704d1cbb9f/merged
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;We can then mount that somewhere else using:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; sudo mount --bind /var/lib/docker/overlay2/d69311eb816371025cf40a7832689180f7805a685badc14a2e84db704d1cbb9f/merged /some/where/convenient
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This means that if we’re trying to debug or analyse what’s happening in
+the container, we can now do so with all the resources available on our
+host machine (GUI tools, binary analysis tools) without having to
+install them in the container.&lt;/p&gt;
+&lt;p&gt;(See also: &lt;a href=&quot;https://superuser.com/questions/1288055/file-explorer-gui-for-a-running-docker-container#1288058&quot;&gt;File explorer GUI for a running docker
+container?&lt;/a&gt;
+on Super User.)&lt;/p&gt;
+&lt;br&gt; Posted by phlummox</content>
+  </entry>
+  
+  <entry>
+    <title>When running &#39;stack setup&#39; for ghcjs…</title>
+    <author>
+      <name>phlummox</name>
+      <uri>https://phlummox.dev/</uri>
+    </author>
+    <link href="https://phlummox.dev/posts/2018/setting-up-ghcjs/"/>
+    <published>2018-07-24T19:38:32Z</published>
+    <updated>2018-07-24T19:38:32Z</updated>
+    <id>https://phlummox.dev/posts/2018/setting-up-ghcjs/</id>
+    <content type="html">&lt;p&gt;… make sure you &lt;em&gt;don’t&lt;/em&gt; have &lt;code&gt;cabal&lt;/code&gt; in your path.
+Otherwise you’ll get odd build errors, and &lt;code&gt;ghcjs&lt;/code&gt; will
+never install: see &lt;a href=&quot;https://github.com/ghcjs/ghcjs/issues/631&quot;&gt;this&lt;/a&gt;
+issue on the ghcjs issue tracker.&lt;/p&gt;
+&lt;br&gt; Posted by phlummox</content>
+  </entry>
+</feed>
+
